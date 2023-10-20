@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Logo from "./components/UI/logo";
+import Header from "./components/layout/header";
 
 export default function Home() {
   return (
     <>
-      <h2>Hello</h2>
-      <h2 className="text-center font-dancing">Hy</h2>
+      <Header />
     </>
   );
 }
