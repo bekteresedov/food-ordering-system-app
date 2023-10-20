@@ -10,38 +10,40 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-secondary">
-        <div className="flex justify-between items-center text-[#fff] py-[15px] w-10/12 mx-auto">
+      <header className="bg-green shadow-header">
+        <div className="flex justify-between items-center text-white py-[10px] w-10/12 mx-auto">
           <div>
-            <Logo>Feane</Logo>
+            <Logo>Baktar</Logo>
           </div>
-          <div>
+          <div className="hidden md:block">
             <NavList />
           </div>
           <div>
             <ul className="flex gap-2 items-center">
-              {/* <li className="text-[16px] hover:text-primary transition-all cursor-pointer">
+              <li className="text-base md:text-base hover:text-red transition-all cursor-pointer">
                 <GiWorld />
-              </li> */}
-              <li className="text-[16px] hover:text-primary transition-all cursor-pointer">
+              </li>
+              <li className="text-base hover:text-red transition-all cursor-pointer">
                 <FaUserAlt />
               </li>
-              <li className="text-[16px] hover:text-primary transition-all cursor-pointer">
+              <li className="text-base hover:text-red transition-all cursor-pointer">
                 <FaShoppingCart />
               </li>
               <li
-                className="text-[16px] hover:text-primary transition-all cursor-pointer relative"
-                onClick={() => setClick(!click)}
+                className="text-base hover:text-red transition-all cursor-pointer relative"
+                onClick={() => setClick(true)}
               >
                 <FaSearch />
                 {click && (
-                  <div className="absolute">
+                  <div className="absolute top-10 right-0">
                     <SearchList />
                   </div>
                 )}
               </li>
               <li>
-                <button className="btn-primary">Order Online</button>
+                <button className="btn-red  hidden md:block">
+                  Order Online
+                </button>
               </li>
             </ul>
           </div>

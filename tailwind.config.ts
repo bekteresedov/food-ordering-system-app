@@ -24,13 +24,25 @@ const config: Config = {
         },
       },
       colors: {
+        white: "#fff",
+        dark: "#000",
+        normal: "#828282",
+        red: "#D63626",
         primary: "#ffbe33",
         secondary: "#222831",
+        // green: "#116D6E"
+        green: "#321E1E"
+
       },
       fontFamily: {
         dancing: ["Dancing Script", "cursive"],
         sans: ["Open Sans", "sans-serif"],
+        mont: ["Montserrat", "sans-serif"],
+        rb: ["Roboto", "sans-serif"],
       },
+      boxShadow: {
+        header: 'box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;',
+      }
     },
   },
   plugins: [],
