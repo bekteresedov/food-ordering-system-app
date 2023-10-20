@@ -5,7 +5,7 @@ import NavItem from "../navItem";
 const NavList = () => {
   return (
     <>
-      <nav className="flex gap-2">
+      <nav className="flex gap-2 text-white">
         {navList.map((element, index) => (
           <NavItem key={index} name={element.name} href={element.href} />
         ))}
