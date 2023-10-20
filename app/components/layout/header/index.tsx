@@ -1,9 +1,13 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Logo from "../../UI/logo";
 import NavList from "../../nav/navList";
 import { FaUserAlt, FaShoppingCart, FaSearch } from "react-icons/fa";
 import { GiWorld } from "react-icons/gi";
+import SearchList from "../../search/searchList";
 const Header = () => {
+  const [click, setClick] = useState<boolean>(false);
+
   return (
     <>
       <header className="bg-secondary">
@@ -25,8 +29,16 @@ const Header = () => {
               <li className="text-[16px] hover:text-primary transition-all cursor-pointer">
                 <FaShoppingCart />
               </li>
-              <li className="text-[16px] hover:text-primary transition-all cursor-pointer">
+              <li
+                className="text-[16px] hover:text-primary transition-all cursor-pointer relative"
+                onClick={() => setClick(!click)}
+              >
                 <FaSearch />
+                {click && (
+                  <div className="absolute">
+                    <SearchList />
+                  </div>
+                )}
               </li>
               <li>
                 <button className="btn-primary">Order Online</button>
