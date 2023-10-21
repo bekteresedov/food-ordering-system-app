@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "animate.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,6 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
       <body>{children}</body>
     </html>
   );
