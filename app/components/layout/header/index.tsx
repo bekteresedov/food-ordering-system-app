@@ -8,6 +8,7 @@ import SearchList from "../../search/searchList";
 import Button from "../../UI/button";
 const Header = () => {
   const [click, setClick] = useState<boolean>(false);
+
   const handleClick = (): void => {
     setClick(!click);
   };
@@ -15,7 +16,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-green shadow-header">
-        <div className="flex justify-between items-center  py-[10px] w-10/12 mx-auto">
+        <div className="flex justify-between items-center  py-[10px] w-10/12 mx-auto relative">
           <div>
             <Logo>Baktar</Logo>
           </div>
@@ -33,16 +34,11 @@ const Header = () => {
               <li>
                 <FaShoppingCart className="text-base hover:text-red transition-all cursor-pointer" />
               </li>
-              <li className="relative">
+              <li>
                 <FaSearch
                   className="text-base hover:text-red transition-all cursor-pointer "
                   onClick={() => handleClick()}
                 />
-                {click && (
-                  <div className="absolute top-10 right-0">
-                    <SearchList onClick={handleClick} />
-                  </div>
-                )}
               </li>
               <li>
                 <Button className="btn-red  hidden md:block">
@@ -51,6 +47,11 @@ const Header = () => {
               </li>
             </ul>
           </div>
+          {click && (
+            <div className="absolute top-[120px] md:top-[140px] left-1/2 transform -translate-x-1/2 w-full md:w-6/12 ">
+              <SearchList onClick={handleClick} />
+            </div>
+          )}
         </div>
       </header>
     </>
