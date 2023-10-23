@@ -20,7 +20,7 @@ const Header = () => {
       <header className={`bg-green shadow-header relative `}>
         <div
           className={`flex justify-between items-center  py-[10px] ${
-            isHamburgerMenu ? "w-full" : "w-10/12"
+            isHamburgerMenu ? "w-full md:w-10/12 text-green" : "w-10/12"
           } mx-auto relative`}
         >
           <div>
@@ -29,7 +29,7 @@ const Header = () => {
           <div
             className={` ${isHamburgerMenu ? "block " : "hidden md:block"} `}
           >
-            <NavList />
+            <NavList onClick={setIsHamburgerMenu} isClick={isHamburgerMenu} />
           </div>
           <div>
             <ul className="flex gap-2 items-center text-white  ">

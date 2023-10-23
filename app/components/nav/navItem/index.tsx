@@ -7,7 +7,7 @@ const NavItem: React.FC<INav> = ({ href, name }) => {
     <>
       <Link
         href={href}
-        className="uppercase font-mont font-semibold  hover:text-red transition-all cursor-pointer text-xs"
+        className="uppercase font-mont font-semibold  hover:text-red hover:border-b md:hover:border-0   transition-all   cursor-pointer text-lg md:text-xs"
       >
         {name}
       </Link>
