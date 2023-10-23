@@ -4,10 +4,12 @@ import Logo from "../../UI/logo";
 import NavList from "../../nav/navList";
 import { FaUserAlt, FaShoppingCart, FaSearch } from "react-icons/fa";
 import { GiWorld } from "react-icons/gi";
+import { RxHamburgerMenu } from "react-icons/rx";
 import SearchList from "../../search/searchList";
 import Button from "../../UI/button";
 const Header = () => {
   const [click, setClick] = useState<boolean>(false);
+  const [isHamburgerMenu, setIsHamburgerMenu] = useState<boolean>(false);
 
   const handleClick = (): void => {
     setClick(!click);
@@ -15,12 +17,18 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-green shadow-header">
-        <div className="flex justify-between items-center  py-[10px] w-10/12 mx-auto relative">
+      <header className={`bg-green shadow-header relative `}>
+        <div
+          className={`flex justify-between items-center  py-[10px] ${
+            isHamburgerMenu ? "w-full" : "w-10/12"
+          } mx-auto relative`}
+        >
           <div>
             <Logo>Baktar</Logo>
           </div>
-          <div className="hidden md:block">
+          <div
+            className={` ${isHamburgerMenu ? "block " : "hidden md:block"} `}
+          >
             <NavList />
           </div>
           <div>
@@ -44,6 +52,12 @@ const Header = () => {
                 <Button className="btn-red  hidden md:block">
                   Order Online
                 </Button>
+              </li>
+              <li>
+                <RxHamburgerMenu
+                  className="text-white text-2xl block md:hidden hover:text-red transition-all"
+                  onClick={() => setIsHamburgerMenu(!isHamburgerMenu)}
+                />
               </li>
             </ul>
           </div>

@@ -7,6 +7,8 @@ export default function Home() {
   return (
     <>
       <Header />
+
+      <div className="h-[1200px]">alma</div>
     </>
   );
 }
