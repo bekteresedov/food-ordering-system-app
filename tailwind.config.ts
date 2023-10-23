@@ -31,7 +31,8 @@ const config: Config = {
         primary: "#ffbe33",
         secondary: "#222831",
         // green: "#116D6E"
-        green: "#321E1E"
+        green: "#321E1E",
+        dbg: "#232D3F"
 
       },
       fontFamily: {
@@ -46,5 +47,6 @@ const config: Config = {
     },
   },
   plugins: [],
+  darkMode: "class",
 }
 export default config

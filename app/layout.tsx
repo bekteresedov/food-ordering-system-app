@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "animate.css";
+import Providers from "./components/theme/Providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +19,9 @@ export default function RootLayout({
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       />
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
