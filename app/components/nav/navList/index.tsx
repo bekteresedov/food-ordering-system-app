@@ -7,8 +7,8 @@ const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
   return (
     <>
       <div
-        className={` absolute md:static z-[50] md:-z-[50]  
-          flex-col md:flex-row fixed top-0 left-0 bg-green opacity-98 w-full md:w-fit h-screen md:h-fit ${
+        className={` fixed md:static z-[50] md:-z-[50]  
+          flex-col md:flex-row  top-0 left-0 bg-green opacity-98 w-full md:w-fit h-screen md:h-fit ${
             isClick && `animate__animated animate__rotateInDownLeft`
           }`}
       >
