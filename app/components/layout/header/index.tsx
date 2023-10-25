@@ -36,7 +36,7 @@ const Header = () => {
           <div>
             <ul className="flex gap-2 items-center text-white  ">
               <ThemeSwitcher />
-              <li>
+              <li className="group flex justify-center relative">
                 {/* <GiWorld className="text-base md:text-base hover:text-red transition-all cursor-pointer " /> */}
                 <Localization />
               </li>

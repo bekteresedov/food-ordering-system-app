@@ -14,6 +14,7 @@ export default function Home() {
       </div>
       <div>
         <p>{t("title")}</p>
+        <p>{t("Home")}</p>
       </div>
     </>
   );
