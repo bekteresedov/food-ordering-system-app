@@ -9,11 +9,14 @@ const ThemeSwitcher = () => {
   const isDarkMode: boolean = theme === "dark";
 
   const toggleMode = (): void => {
-    if (isLightMode) {
+    if (theme === "system") {
       setTheme("dark");
-    } else if (isDarkMode) {
+    } else if (theme === "light") {
+      setTheme("dark");
+    } else {
       setTheme("light");
     }
+    console.log(theme);
   };
   return (
     <>

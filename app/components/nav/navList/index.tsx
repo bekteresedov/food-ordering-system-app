@@ -16,7 +16,7 @@ const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
           onClick={() => onClick(false)}
           className="text-4xl text-white float-right block md:hidden mt-5 mr-3 hover:text-red  transition-all"
         />
-        <nav className="flex flex-col md:flex-row  items-end gap-3 md:gap-2 text-white mt-[100px] md:mt-0 mr-8 md:mr-0">
+        <nav className="flex flex-col md:flex-row  items-end gap-3 md:gap-3 text-white mt-[100px] md:mt-0 mr-8 md:mr-0">
           {navList.map((element, index) => (
             <NavItem key={index} name={element.name} href={element.href} />
           ))}

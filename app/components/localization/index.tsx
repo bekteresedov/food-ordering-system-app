@@ -7,12 +7,12 @@ import Image from "next/image";
 const Localization = () => {
   return (
     <>
-      <div>
+      <div className="flex gap-1">
         <Link href="/" locale="en">
-          <Image src={eng} alt="eng" width={20} />
+          <Image src={eng} alt="eng" width={18} />
         </Link>
         <Link href="/" locale="aze">
-          <Image src={aze} alt="aze" width={20} />
+          <Image src={aze} alt="aze" width={18} />
         </Link>
       </div>
     </>
