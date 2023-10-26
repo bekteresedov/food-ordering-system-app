@@ -1,20 +1,17 @@
-import Image from "next/image";
 import Header from "../components/layout/header";
-import { useTranslations } from "next-intl";
-import Localization from "../components/localization";
+import LangSwitch from "../components/lang";
 export default function Home() {
-  const t = useTranslations("Index");
-
   return (
     <>
+      {/* <Header /> */}
       <Header />
-      <div className="h-[100px]">alma</div>
-      <div>
+      {/* <LangSwitch /> */}
+      {/* <div>
         <Localization />
-      </div>
+      </div> */}
       <div>
-        <p>{t("title")}</p>
-        <p>{t("Home")}</p>
+        {/* <p>{t("title")}</p>
+        <p>{t("Home")}</p> */}
       </div>
     </>
   );

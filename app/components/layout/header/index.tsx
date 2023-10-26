@@ -8,8 +8,11 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import SearchList from "../../search/searchList";
 import Button from "../../UI/button";
 import ThemeSwitcher from "../../theme/themeSwitcher";
-import Localization from "../../localization";
+import { useTranslations } from "next-intl";
+import LangSwitch from "../../lang";
 const Header = () => {
+  const t = useTranslations("Index");
+
   const [click, setClick] = useState<boolean>(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState<boolean>(false);
 
@@ -36,9 +39,9 @@ const Header = () => {
           <div>
             <ul className="flex gap-2 items-center text-white  ">
               <ThemeSwitcher />
-              <li className="group flex justify-center relative">
+              <li className=" hidden md:block">
                 {/* <GiWorld className="text-base md:text-base hover:text-red transition-all cursor-pointer " /> */}
-                <Localization />
+                <LangSwitch />
               </li>
               <li>
                 <FaUserAlt className="text-base hover:text-red transition-all cursor-pointer" />

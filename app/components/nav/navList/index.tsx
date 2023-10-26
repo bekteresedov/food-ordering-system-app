@@ -4,6 +4,7 @@ import NavItem from "../navItem";
 import { VscChromeClose } from "react-icons/vsc";
 import { INavProps } from "@/app/types/header/INav";
 import { useTranslations } from "next-intl";
+import LangSwitch from "../../lang";
 const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
   // const t = useTranslations("Index");s
 
@@ -19,7 +20,11 @@ const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
           onClick={() => onClick(false)}
           className="text-4xl text-white float-right block md:hidden mt-5 mr-3 hover:text-red  transition-all"
         />
-        <nav className="flex flex-col md:flex-row  items-end gap-3 md:gap-2 text-white mt-[100px] md:mt-0 mr-8 md:mr-0">
+
+        <nav className="flex flex-col md:flex-row  items-end gap-3 md:gap-2 text-white mt-[90px] md:mt-0 mr-8 md:mr-0">
+          <div className="block md:hidden mb-2">
+            <LangSwitch />
+          </div>
           {navList.map((element, index) => (
             <NavItem key={index} name={element.name} href={element.href} />
           ))}
