@@ -1,9 +1,11 @@
 {
-  "Index": {
-    "Home": "Home",
-    "Menu": "Menu",
-    "About": "About",
-    "Book Table": "Book Table",
-    "title": "Hello World"
+  "HomePage": {
+    "Header": {
+      "Home": "Home",
+      "Menu": "Menu",
+      "About": "About",
+      "Book Table": "Book Table",
+      "title": "Hello World"
+    }
   }
 }

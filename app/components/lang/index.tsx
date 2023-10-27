@@ -8,7 +8,6 @@ import aze from "./assets/images/aze.svg";
 import usa from "./assets/images/usa.svg";
 
 function LangSwitch() {
-  const router = useRouter();
   const pathname = usePathname();
 
   return (

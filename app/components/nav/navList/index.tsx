@@ -6,7 +6,7 @@ import { INavProps } from "@/app/types/header/INav";
 import { useTranslations } from "next-intl";
 import LangSwitch from "../../lang";
 const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
-  // const t = useTranslations("Index");s
+  const t = useTranslations("Header.NavList");
 
   return (
     <>
@@ -26,7 +26,7 @@ const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
             <LangSwitch />
           </div>
           {navList.map((element, index) => (
-            <NavItem key={index} name={element.name} href={element.href} />
+            <NavItem key={index} name={t(element.name)} href={element.href} />
           ))}
         </nav>
       </div>

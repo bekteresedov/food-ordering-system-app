@@ -1,9 +1,11 @@
 {
-  "Index": {
-    "Home": "Əsas",
-    "Menu": "Menyu",
-    "About": "Haqqımızda",
-    "Book Table": "Kitab Masası",
-    "title": "Salam"
+  "Header": {
+    "NavList": {
+      "Home": "Əsas",
+      "Menu": "Menyu",
+      "About": "Haqqında",
+      "Book Table": "Kitab Masası",
+      "title": "Hello World"
+    }
   }
 }
