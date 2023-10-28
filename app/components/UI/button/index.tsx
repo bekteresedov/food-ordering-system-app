@@ -1,10 +1,15 @@
 import { IButtonProps } from "@/app/types/ui/IButton";
 import React from "react";
 
-const Button: React.FC<IButtonProps> = ({ children, onClick, className }) => {
+const Button: React.FC<IButtonProps> = ({
+  children,
+  onClick,
+  className,
+  disabled,
+}) => {
   return (
     <>
-      <button className={className} onClick={onClick}>
+      <button disabled={disabled} className={className} onClick={onClick}>
         {children}
       </button>
     </>

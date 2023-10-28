@@ -134,7 +134,7 @@ const MenuList = () => {
   return (
     <>
       <section className={`w-8/12 mx-auto `}>
-        <Title className="text-center font-dancing font-black text-2xl cursor-pointer">
+        <Title className="text-center font-dancing font-black text-3xl cursor-pointer">
           Our Menu
         </Title>
         <div>
@@ -159,7 +159,10 @@ const MenuList = () => {
             </ul>
             <ul className="flex justify-between mt-5 flex-wrap ">
               {data[number].product.slice(0, limit).map((item, index) => (
-                <li key={index} className={`w-[30%] mb-5`}>
+                <li
+                  key={index}
+                  className={`w-full sm:w-full md:w-[45%] lg:w-[30%] mb-5`}
+                >
                   <MenuItem
                     price={item.price}
                     src={item.src}
@@ -172,6 +175,7 @@ const MenuList = () => {
             <Button
               className="btn-red font-mont mt-2 "
               onClick={() => setLimit(limit + 3)}
+              disabled={limit == data[number].product.length}
             >
               View More
             </Button>
