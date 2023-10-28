@@ -11,7 +11,7 @@ import ThemeSwitcher from "../../theme/themeSwitcher";
 import { useTranslations } from "next-intl";
 import LangSwitch from "../../lang";
 const Header = () => {
-  const t = useTranslations("Index");
+  const t = useTranslations("Header");
 
   const [click, setClick] = useState<boolean>(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState<boolean>(false);
@@ -57,7 +57,7 @@ const Header = () => {
               </li>
               <li>
                 <Button className="btn-red  hidden md:block">
-                  Order Online
+                  {t("Order Online")}
                 </Button>
               </li>
               <li>
@@ -69,7 +69,7 @@ const Header = () => {
             </ul>
           </div>
           {click && (
-            <div className="absolute top-[120px] md:top-[140px] left-1/2 transform -translate-x-1/2 w-full md:w-6/12 ">
+            <div className="absolute z-[100] top-[120px] md:top-[140px] left-1/2 transform -translate-x-1/2 w-full md:w-6/12 ">
               <SearchList onClick={handleClick} />
             </div>
           )}

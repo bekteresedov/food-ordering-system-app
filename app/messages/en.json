@@ -1,4 +1,7 @@
 {
+  "Header": {
+    "Order Online": "Order Online"
+  },
   "NavList": {
     "Home": "Home",
     "Menu": "Menu",
@@ -8,5 +11,9 @@
   },
   "Campaign": {
     "Order Now": "Order Now"
+  },
+  "Menu": {
+    "Our Menu": "Our Menu",
+    "View More": "View More"
   }
 }

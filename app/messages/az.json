@@ -1,4 +1,7 @@
 {
+  "Header": {
+    "Order Online": "Onlayn Sifariş Edin"
+  },
   "NavList": {
     "Home": "Əsas",
     "Menu": "Menyu",
@@ -8,5 +11,9 @@
   },
   "Campaign": {
     "Order Now": "İndi sifariş edin"
+  },
+  "Menu": {
+    "Our Menu": "Bizim Menyu",
+    "View More": "Daha Çox"
   }
 }

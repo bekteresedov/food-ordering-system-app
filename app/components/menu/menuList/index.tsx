@@ -4,6 +4,7 @@ import Title from "../../UI/title";
 import { IMenu } from "@/app/types/menu/IMenu";
 import MenuItem from "../menuItem";
 import Button from "../../UI/button";
+import { useTranslations } from "next-intl";
 const data: IMenu[] = [
   {
     categoryName: "Hamburger",
@@ -130,12 +131,13 @@ const data: IMenu[] = [
 const MenuList = () => {
   const [number, setNumber] = useState<number>(0);
   const [limit, setLimit] = useState<number>(3);
+  const t = useTranslations("Menu");
 
   return (
     <>
       <section className={`w-8/12 mx-auto `}>
         <Title className="text-center font-dancing font-black text-3xl cursor-pointer">
-          Our Menu
+          {t("Our Menu")}
         </Title>
         <div>
           <div className="flex flex-col items-center mt-4">
@@ -177,7 +179,7 @@ const MenuList = () => {
               onClick={() => setLimit(limit + 3)}
               disabled={limit == data[number].product.length}
             >
-              View More
+              {t("View More")}
             </Button>
           </div>
         </div>
