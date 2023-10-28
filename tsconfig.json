@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "i18n.ts", "middlewares.ts", "middleware.js", "app/components/localization/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "i18n.ts", "middlewares.ts", "middleware.js", "app/components/localization/index.jsx", "app/components/carousel/index.tsx"],
   "exclude": ["node_modules"]
 }

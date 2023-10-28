@@ -1,3 +1,5 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import type { Metadata } from "next";
 import Providers from "../components/theme/providers";
 import { notFound } from "next/navigation";
