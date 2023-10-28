@@ -6,7 +6,7 @@ import { INavProps } from "@/app/types/header/INav";
 import { useTranslations } from "next-intl";
 import LangSwitch from "../../lang";
 const NavList: React.FC<INavProps> = ({ onClick, isClick }) => {
-  const t = useTranslations("Header.NavList");
+  const t = useTranslations("NavList");
 
   return (
     <>

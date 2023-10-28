@@ -10,7 +10,7 @@ const NavItem: React.FC<INav> = ({ href, name }) => {
           href={href}
           className="uppercase font-mont font-semibold border-red hover:border-b transition-all cursor-pointer text-lg md:text-xs pb-1"
         >
-          {name.includes(".") ? name.split(".")[2] : name}
+          {name}
         </Link>
         <sup className="mt-1 ml-1 hidden text-red md:group-hover:block ">
           &#9679;

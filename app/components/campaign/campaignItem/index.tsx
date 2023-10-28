@@ -1,11 +1,15 @@
+"use client";
 import React from "react";
 import Button from "../../UI/button";
 import { ICampaign } from "@/app/types/home/ICampaign";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import { BsBasketFill } from "react-icons/bs";
+import { useTranslations } from "next-intl";
 
 const CampaignItem: React.FC<ICampaign> = ({ discount, src, title }) => {
+  const t = useTranslations("Campaign");
+
   return (
     <>
       <div className=" dark:bg-dbg bg-green text-white flex gap-4 px-3 py-4 rounded w-full hover:scale-105 transition-all">
@@ -31,8 +35,8 @@ const CampaignItem: React.FC<ICampaign> = ({ discount, src, title }) => {
             <span className="font-dancing ml-[2px] text-xs">Off</span>
           </div>
           <div className="hidden md:block">
-            <Button className=" btn-red flex items-center gap-1">
-              Order Now
+            <Button className=" btn-red flex items-center gap-1 font-mont">
+              {t("Order Now")}
               <FaShoppingCart className="text-xs" />
             </Button>
           </div>

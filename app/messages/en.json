@@ -1,11 +1,12 @@
 {
-  "HomePage": {
-    "Header": {
-      "Home": "Home",
-      "Menu": "Menu",
-      "About": "About",
-      "Book Table": "Book Table",
-      "title": "Hello World"
-    }
+  "NavList": {
+    "Home": "Home",
+    "Menu": "Menu",
+    "About": "About",
+    "Book Table": "Book Table",
+    "title": "Hello World"
+  },
+  "Campaign": {
+    "Order Now": "Order Now"
   }
 }

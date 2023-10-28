@@ -32,8 +32,12 @@ const config: Config = {
         secondary: "#222831",
         // green: "#116D6E"
         green: "#321E1E",
-        dbg: "#232D3F"
+        dbg: "#232D3F",
+        pbg: "#D2E3C8"
 
+      },
+      borderRadius: {
+        pro: "5px 5px 0 37px",
       },
       fontFamily: {
         dancing: ["Dancing Script", "cursive"],

@@ -1,11 +1,12 @@
 {
-  "Header": {
-    "NavList": {
-      "Home": "Əsas",
-      "Menu": "Menyu",
-      "About": "Haqqında",
-      "Book Table": "Kitab Masası",
-      "title": "Hello World"
-    }
+  "NavList": {
+    "Home": "Əsas",
+    "Menu": "Menyu",
+    "About": "Haqqında",
+    "Book Table": "Kitab Masası",
+    "title": "Hello World"
+  },
+  "Campaign": {
+    "Order Now": "İndi sifariş edin"
   }
 }
