@@ -38,7 +38,7 @@ const Coursel: React.FC = () => {
             <div className="absolute text-white top-0">
               <div className=" w-10/12 mx-auto mt-[7%] md:mt-[15%]">
                 <div className="w-8/12 md:w-6/12 text-start">
-                  <Title className="text-2xl md:text-4xl font-dancing ">
+                  <Title className="text-2xl md:text-4xl ">
                     {t("Fast Food Restaurant")}
                   </Title>
                   <p className="font-mont text-[9px] md:text-[14px] mt-1 md:mt-4 w-full md:w-10/12">

@@ -4,7 +4,7 @@ import React from "react";
 const Title: React.FC<ITitleProps> = ({ children, className }) => {
   return (
     <>
-      <h2 className={className}>{children}</h2>
+      <h2 className={`font-dancing cursor-pointer ${className}`}>{children}</h2>
     </>
   );
 };

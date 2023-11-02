@@ -18,7 +18,7 @@ const About = () => {
               <Image src={about} alt="About" width={300} height={350} />
             </div>
             <div className="w-full md:w-8/12">
-              <Title className="font-black text-3xl font-dancing">
+              <Title className="font-black text-3xl ">
                 {t("We Are Baktar")}
               </Title>
               <div className="my-4 font-mont text-[13px] md:text-[14px]">

@@ -7,6 +7,7 @@ import CarouselComponent from "../components/carousel";
 import Coursel from "../components/carousel";
 import About from "../components/about";
 import Reservation from "../components/reservation";
+import CustomerList from "../components/customer/customerList";
 export default function Home() {
   return (
     <>
@@ -18,6 +19,7 @@ export default function Home() {
         <MenuList />
         <About />
         <Reservation />
+        <CustomerList />
       </div>
       {/* <LangSwitch /> */}
       {/* <div>
