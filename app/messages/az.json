@@ -6,7 +6,7 @@
     "Home": "Əsas",
     "Menu": "Menyu",
     "About": "Haqqında",
-    "Book Table": "Kitab Masası",
+    "Book Table": "Sifariş",
     "title": "Hello World"
   },
   "Campaign": {
@@ -23,5 +23,13 @@
   "About": {
     "Read More": "Daha çox oxu",
     "We Are Baktar": "Biz Baktarıq"
+  },
+  "Reservation": {
+    "Book A Table": "Sifariş ",
+    "Book Now": "Rezerv Edin",
+    "Your Full Name": "Ad və soyadın",
+    "Your Phone Number": "Telefon nömrəniz",
+    "Your Email Address": "E-poçt ünvanınız",
+    "How Many Persons?": "Neçə nəfər?"
   }
 }

@@ -1,16 +1,20 @@
+"use client";
 import React from "react";
 import Title from "../UI/title";
 import { inputs } from "@/app/constants/reservation/Reservation";
 import Input from "../UI/input";
 import Button from "../UI/button";
+import { useTranslations } from "next-intl";
 
 const Reservation = () => {
+  const t = useTranslations("Reservation");
+
   return (
     <>
       <section>
         <div className="w-8/12 mx-auto">
           <Title className="font-black text-3xl font-dancing my-10">
-            Book A Table
+            {t("Book A Table")}
           </Title>
           <div className="flex flex-col md:flex-row gap-[30px]">
             <div className="flex flex-col gap-3 w-full md:w-6/12">
@@ -19,11 +23,11 @@ const Reservation = () => {
                   className="p-3"
                   id={input.name}
                   key={index}
-                  placeholder={input.placeholder}
+                  placeholder={t(input.placeholder)}
                   type={input.type}
                 />
               ))}
-              <Button className="btn-red  w-fit">Book Now</Button>
+              <Button className="btn-red  w-fit">{t("Book Now")}</Button>
             </div>
             <div className="w-full md:w-6/12">
               <iframe

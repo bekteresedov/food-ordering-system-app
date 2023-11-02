@@ -23,5 +23,13 @@
   "About": {
     "Read More": "Read More",
     "We Are Baktar": "We Are Baktar"
+  },
+  "Reservation": {
+    "Book A Table": "Book A Table",
+    "Book Now": "Book Now",
+    "Your Full Name": "Your Full Name",
+    "Your Phone Number": "Your Phone Number",
+    "Your Email Address": "Your Email Address",
+    "How Many Persons?": "How Many Persons?"
   }
 }
