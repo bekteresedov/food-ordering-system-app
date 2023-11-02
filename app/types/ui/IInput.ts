@@ -5,5 +5,6 @@ export interface IInput {
     className?: string
     value?: string
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
 }

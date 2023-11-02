@@ -5,6 +5,8 @@ import MenuList from "../components/menu/menuList";
 import Carousel from "../components/carousel";
 import CarouselComponent from "../components/carousel";
 import Coursel from "../components/carousel";
+import About from "../components/about";
+import Reservation from "../components/reservation";
 export default function Home() {
   return (
     <>
@@ -14,6 +16,8 @@ export default function Home() {
       <div className="mt-10 h-[20000px]">
         <CampaignList />
         <MenuList />
+        <About />
+        <Reservation />
       </div>
       {/* <LangSwitch /> */}
       {/* <div>
