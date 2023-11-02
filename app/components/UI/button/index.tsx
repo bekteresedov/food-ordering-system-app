@@ -6,10 +6,16 @@ const Button: React.FC<IButtonProps> = ({
   onClick,
   className,
   disabled,
+  type,
 }) => {
   return (
     <>
-      <button disabled={disabled} className={className} onClick={onClick}>
+      <button
+        type={type}
+        disabled={disabled}
+        className={className}
+        onClick={onClick}
+      >
         {children}
       </button>
     </>

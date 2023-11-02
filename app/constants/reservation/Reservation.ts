@@ -1,4 +1,4 @@
-import { IInputList } from "@/app/types/reservation/IReservation";
+import IInputList from "@/app/types/reservation/IReservation";
 
 export const inputs: IInputList[] = [
     {

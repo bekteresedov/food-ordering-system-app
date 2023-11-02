@@ -9,18 +9,27 @@ const Input: React.FC<IInput> = ({
   value,
   onChange,
   onBlur,
+  errorMessage,
+  isShowError,
 }) => {
   return (
     <>
-      <input
-        id={id}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        value={value}
-        type={type}
-        className={`outline-none border text-dark rounded text-sm ${className}`}
-      />
+      <div>
+        <input
+          id={id}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={onBlur}
+          value={value}
+          type={type}
+          className={`outline-none border text-dark rounded w-full text-sm ${className} ${
+            isShowError && errorMessage && "border-red"
+          }`}
+        />
+        {errorMessage && isShowError && (
+          <p className="text-red text-xs font-mont">{errorMessage}</p>
+        )}
+      </div>
     </>
   );
 };

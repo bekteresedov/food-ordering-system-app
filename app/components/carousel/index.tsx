@@ -28,7 +28,7 @@ const Coursel: React.FC = () => {
           margin: "0 auto",
         }}
       >
-        <Carousel selectedItem={activeSlide}>
+        <Carousel selectedItem={activeSlide} showThumbs={false}>
           <div className="relative">
             <Image
               src={hero1}
