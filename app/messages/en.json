@@ -31,6 +31,15 @@
     "Your Phone Number": "Your Phone Number",
     "Your Email Address": "Your Email Address",
     "How Many Persons?": "How Many Persons?",
-    "Date": "Date"
+    "Date": "Date",
+    "Successfully completed!": "Successfully completed!",
+    "Full name is required": "Full name is required.",
+    "Full name must be at least 3 characters": "Full name must be at least 3 characters.",
+    "Phone Number is required": "Phone Number is required.",
+    "Phone number must be at least 10 characters": "Phone number must be at least 10 characters.",
+    "Email is required": "Email is required.",
+    "Email is invalid": "Email is invalid.",
+    "Persons is required": "Persons is required.",
+    "Date is required": "Date is required."
   }
 }

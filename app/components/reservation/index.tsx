@@ -8,20 +8,36 @@ import { useTranslations } from "next-intl";
 import { useFormik } from "formik";
 import { FormValues } from "@/app/types/reservation/IReservation";
 import { reservationSchema } from "../../schema/reservation";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Reservation = () => {
   const t = useTranslations("Reservation");
   const [showErrors, setShowErrors] = useState<boolean>(false);
+
   const handleButtonClick = (): void => {
     setShowErrors(true);
     // formik.handleSubmit();
   };
 
   const onSubmit = async (values: FormValues, actions: any) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    notify();
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log(values);
     actions.resetForm();
   };
+
+  const notify = () =>
+    toast.success("Successfully completed!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
   const formik = useFormik<FormValues>({
     initialValues: {
       fullName: "",
@@ -58,7 +74,9 @@ const Reservation = () => {
                   key={index}
                   placeholder={t(input.placeholder)}
                   type={input.type}
-                  errorMessage={formik.errors[input.name as keyof FormValues]}
+                  errorMessage={t(
+                    formik.errors[input.name as keyof FormValues]
+                  )}
                   isShowError={
                     showErrors && Object.keys(formik.errors).length > 0
                   }
@@ -84,6 +102,18 @@ const Reservation = () => {
             </div>
           </div>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </section>
     </>
   );

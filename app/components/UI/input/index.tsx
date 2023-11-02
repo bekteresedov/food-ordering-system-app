@@ -22,12 +22,15 @@ const Input: React.FC<IInput> = ({
           onBlur={onBlur}
           value={value}
           type={type}
-          className={`outline-none border text-dark rounded w-full text-sm ${className} ${
-            isShowError && errorMessage && "border-red"
+          className={`outline-none border dark:text-white text-dark rounded w-full text-sm ${className} ${
+            isShowError &&
+            errorMessage &&
+            errorMessage != "Reservation" &&
+            "border-red"
           }`}
         />
-        {errorMessage && isShowError && (
-          <p className="text-red text-xs font-mont">{errorMessage}</p>
+        {errorMessage && isShowError && errorMessage != "Reservation" && (
+          <p className="text-red text-xs font-mont mt-[2px]">{errorMessage}</p>
         )}
       </div>
     </>

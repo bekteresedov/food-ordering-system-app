@@ -30,7 +30,16 @@
     "Your Full Name": "Ad və soyadın",
     "Your Phone Number": "Telefon nömrəniz",
     "Your Email Address": "E-poçt ünvanınız",
-    "How Many Persons?": "Neçə nəfər?",
-    "Date": "Tarix"
+    "How Many Persons?": "Neçə şəxs?",
+    "Date": "Tarix",
+    "Successfully completed!": "Uğurla başa vurdu!",
+    "Full name is required": "Ad və soyad boş buraxılamaz.",
+    "Full name must be at least 3 characters": "Ad və soyad minimum 3 simvoldan ibarət olmalıdır.",
+    "Phone Number is required": "Telfon Nömrəniz boş buraxılamaz.",
+    "Phone number must be at least 10 characters": "Telfon Nömrəniz minumum 10 simvoldan ibarət olmalıdır.",
+    "Email is required": "Email boş buraxılamaz.",
+    "Email is invalid": "E-poçt doğru deyil.",
+    "Persons is required": "Şəxslər boş buraxılamaz.",
+    "Date is required": "Tarix boş buraxılamaz."
   }
 }
