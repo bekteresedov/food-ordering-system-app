@@ -14,7 +14,7 @@ const Coursel: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prevSlide) => (prevSlide + 1) % 3); // 3 slaytınız varsa 3 yerine slayt sayısını yazabilirsiniz
-    }, 4000);
+    }, 6000);
 
     return () => {
       clearInterval(interval);

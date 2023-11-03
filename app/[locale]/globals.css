@@ -20,3 +20,17 @@ body {
   font-size: 24px;
   display: none;
 }
+/* CustomerList.css */
+.customer-animation {
+  animation: fadeIn 1s ease both;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
