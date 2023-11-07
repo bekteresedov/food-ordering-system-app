@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
 import CustomerItem from "../customerItem";
-import client1 from "./assets/images/client1.jpg";
-import client2 from "./assets/images/client2.jpg";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { customers } from "@/app/constants/customer/customers";
+import { useTranslations } from "next-intl";
 const CustomerList = () => {
   const [next, setNext] = useState<number>(1);
   const [back, setBack] = useState<number>(0);
+  const t = useTranslations("Customer");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -18,7 +18,7 @@ const CustomerList = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [next | back]);
+  }, [next]);
 
   const handleNextCustomer = (): void => {
     if (next < customers.length - 1) {
@@ -41,10 +41,10 @@ const CustomerList = () => {
   };
   return (
     <>
-      <section className="mt-20 ">
+      <section>
         <div className="w-8/12 mx-auto text-center">
           <Title className="font-black text-3xl font-dancing mt-10 mb-5">
-            What Says Our Customers
+            {t("What Says Our Customers")}
           </Title>
           <div className="flex gap-8">
             <CustomerItem

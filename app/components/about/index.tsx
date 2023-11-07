@@ -11,7 +11,7 @@ const About = () => {
 
   return (
     <>
-      <section className="dark:bg-dbg bg-green text-white mt-14">
+      <section className="dark:bg-dbg bg-green text-white ">
         <div className="w-8/12 mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12 py-10">
             <div className="w-4/12  hidden md:block">
@@ -39,7 +39,7 @@ const About = () => {
                 </p>
               </div>
 
-              <Button className="btn-red" onClick={() => setMore(true)}>
+              <Button className="btn-red" onClick={() => setMore(!more)}>
                 {t("Read More")}
               </Button>
             </div>

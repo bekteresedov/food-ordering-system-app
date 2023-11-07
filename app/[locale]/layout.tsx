@@ -7,6 +7,8 @@ import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 import "animate.css";
 import { ReactNode } from "react";
+import Header from "../components/layout/header";
+import Footer from "../components/layout/footer";
 interface ILocaleLayoutProps {
   children: ReactNode;
   params: { locale: string };
@@ -35,7 +37,11 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

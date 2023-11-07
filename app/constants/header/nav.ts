@@ -16,6 +16,6 @@ export const navList: INav[] = [
     },
     {
         name: "Book Table",
-        href: "/book-table"
+        href: "/reservation"
     }
 ]

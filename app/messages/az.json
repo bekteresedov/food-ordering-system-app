@@ -41,5 +41,8 @@
     "Email is invalid": "E-poçt doğru deyil.",
     "Persons is required": "Şəxslər boş buraxılamaz.",
     "Date is required": "Tarix boş buraxılamaz."
+  },
+  "Customer": {
+    "What Says Our Customers": "Müştərilərimizin fikirləri"
   }
 }

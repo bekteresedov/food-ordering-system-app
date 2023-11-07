@@ -41,5 +41,8 @@
     "Email is invalid": "Email is invalid.",
     "Persons is required": "Persons is required.",
     "Date is required": "Date is required."
+  },
+  "Customer": {
+    "What Says Our Customers": "What Says Our Customers"
   }
 }

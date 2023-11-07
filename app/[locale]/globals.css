@@ -11,9 +11,6 @@
 
 /*  */
 
-body {
-  height: 200vh;
-}
 .slick-prev:before,
 .slick-next:before {
   color: #000;
