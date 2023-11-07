@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Providers from "../components/theme/providers";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import "./globals.css";
+import "@/app/style/globals.css";
 import "animate.css";
 import { ReactNode } from "react";
 import Header from "../components/layout/header";

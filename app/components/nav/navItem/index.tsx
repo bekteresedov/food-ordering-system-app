@@ -4,7 +4,9 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 const NavItem: React.FC<INav> = ({ href, name }) => {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  pathname = pathname.includes("/az") ? pathname.split("/az")[1] : pathname;
+  console.log(pathname);
 
   return (
     <>

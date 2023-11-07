@@ -9,7 +9,7 @@ const ProductDetails = () => {
   return (
     <>
       <section>
-        <div className="flex flex-col md:flex-row items-center h-[50vh] md:h-screen gap-[50px] md:gap-[100px] w-10/12 mx-auto">
+        <div className="flex flex-col md:flex-row items-center h-[51  0vh] md:h-screen gap-[50px] md:gap-[100px] w-10/12 mx-auto">
           <div>
             <Image src={pizza} alt="pizza" />
           </div>

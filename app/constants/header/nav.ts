@@ -3,7 +3,7 @@ import { INav } from "@/app/types/header/INav";
 export const navList: INav[] = [
     {
         name: 'Home',
-        href: "/"
+        href: "/home"
 
     },
     {
