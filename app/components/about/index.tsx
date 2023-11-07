@@ -11,7 +11,7 @@ const About = () => {
 
   return (
     <>
-      <section className="dark:bg-dbg bg-green text-white">
+      <section className="dark:bg-dbg bg-green text-white mt-14">
         <div className="w-8/12 mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12 py-10">
             <div className="w-4/12  hidden md:block">

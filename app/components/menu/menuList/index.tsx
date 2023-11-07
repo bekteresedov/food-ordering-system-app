@@ -135,7 +135,7 @@ const MenuList = () => {
 
   return (
     <>
-      <section className={`w-8/12 mx-auto `}>
+      <section className={`w-8/12 mx-auto mt-14`}>
         <Title className="text-center  font-black text-3xl ">
           {t("Our Menu")}
         </Title>

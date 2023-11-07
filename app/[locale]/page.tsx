@@ -8,19 +8,21 @@ import Coursel from "../components/carousel";
 import About from "../components/about";
 import Reservation from "../components/reservation";
 import CustomerList from "../components/customer/customerList";
+import Footer from "../components/layout/footer";
 export default function Home() {
   return (
     <>
       {/* <Header /> */}
       <Header />
       <Coursel />
-      <div className="mt-10 h-[20000px]">
+      <div className="mt-10 ">
         <CampaignList />
         <MenuList />
         <About />
         <Reservation />
         <CustomerList />
       </div>
+      <Footer />
       {/* <LangSwitch /> */}
       {/* <div>
         <Localization />
