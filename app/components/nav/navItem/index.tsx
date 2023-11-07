@@ -6,7 +6,6 @@ import React from "react";
 const NavItem: React.FC<INav> = ({ href, name }) => {
   let pathname = usePathname();
   pathname = pathname.includes("/az") ? pathname.split("/az")[1] : pathname;
-  console.log(pathname);
 
   return (
     <>
