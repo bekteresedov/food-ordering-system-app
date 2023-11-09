@@ -1,4 +1,4 @@
-import Login from "@/app/components/auth/login";
+import Register from "@/app/components/auth/register";
 import React from "react";
 
 const Page = () => {
@@ -6,7 +6,7 @@ const Page = () => {
     <>
       <main>
         <div className="mt-16 mb-14">
-          <Login />
+          <Register />
         </div>
       </main>
     </>

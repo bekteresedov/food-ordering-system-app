@@ -32,17 +32,41 @@
     "Your Email Address": "E-poçt ünvanınız",
     "How Many Persons?": "Neçə şəxs?",
     "Date": "Tarix",
-    "Successfully completed!": "Uğurla başa vurdu!",
+    "Successfully completed!": "Uğurla başa vurdu!"
+  },
+  "Customer": {
+    "What Says Our Customers": "Müştərilərimizin fikirləri"
+  },
+  "Login": {
+    "Successfully completed!": "Uğurla giriş olundu!",
+    "Your Email Address": "E-poçt ünvanınız",
+    "Your Password": "Parolunuz",
+    "Login": "Giriş",
+    "Do you no have account?": "Hesabınız yoxdur?"
+  },
+  "Register": {
+    "Successfully Register in": "Uğurla Qeydiyyat olundu!",
+    "Register": "Qeydiyyat",
+    "Your Full Name": "Ad və soyadın",
+    "Your Email Address": "E-poçt ünvanınız",
+    "Your Password": "Parolunuz",
+    "Your Password Again": "Təkrar Parolunuz",
+    "Do you have account?": "Hesabınız var?"
+  },
+  "Errors": {
     "Full name is required": "Ad və soyad boş buraxılamaz.",
     "Full name must be at least 3 characters": "Ad və soyad minimum 3 simvoldan ibarət olmalıdır.",
     "Phone Number is required": "Telfon Nömrəniz boş buraxılamaz.",
     "Phone number must be at least 10 characters": "Telfon Nömrəniz minumum 10 simvoldan ibarət olmalıdır.",
-    "Email is required": "Email boş buraxılamaz.",
-    "Email is invalid": "E-poçt doğru deyil.",
     "Persons is required": "Şəxslər boş buraxılamaz.",
-    "Date is required": "Tarix boş buraxılamaz."
-  },
-  "Customer": {
-    "What Says Our Customers": "Müştərilərimizin fikirləri"
+    "Date is required": "Tarix boş buraxılamaz.",
+    "Do you no have account?": "Hesabınız yoxdur?",
+    "Email is required": "E-poçt boş buraxılamaz.",
+    "Email is invalid": "E-poçt etibarsızdır.",
+    "Confirm password is required": "Təsdiq parol boş buraxılamaz.",
+    "Passwords must match": "Parollar uyğun olmalıdır.",
+    "Password is required": "Parol boş buraxılamaz.",
+    "Password must be at least 8 characters": "Parol minimum 8 simvoldan ibarət olmalıdır.",
+    "Password must contain at least one uppercase, one lowercase, one number and one special character": "Parolda ən azı bir böyük hərf, bir kiçik hərf, bir rəqəm və bir xüsusi simvol olmalıdır."
   }
 }

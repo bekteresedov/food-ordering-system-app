@@ -27,7 +27,7 @@ const Reservation = () => {
   };
 
   const notify = () =>
-    toast.success("Successfully completed!", {
+    toast.success(t("Successfully completed!"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -74,9 +74,7 @@ const Reservation = () => {
                   key={index}
                   placeholder={t(input.placeholder)}
                   type={input.type}
-                  errorMessage={t(
-                    formik.errors[input.name as keyof FormValues]
-                  )}
+                  errorMessage={formik.errors[input.name as keyof FormValues]}
                   isShowError={
                     showErrors && Object.keys(formik.errors).length > 0
                   }

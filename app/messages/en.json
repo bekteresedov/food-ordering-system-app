@@ -32,17 +32,40 @@
     "Your Email Address": "Your Email Address",
     "How Many Persons?": "How Many Persons?",
     "Date": "Date",
-    "Successfully completed!": "Successfully completed!",
+    "Successfully completed!": "Successfully completed!"
+  },
+  "Customer": {
+    "What Says Our Customers": "What Says Our Customers"
+  },
+  "Login": {
+    "Successfully Logged in": "Successfully Logged in",
+    "Login": "Login",
+    "Your Email Address": "Your Email Address",
+    "Your Password": "Your Password",
+    "Do you no have account?": "Do you no have account?"
+  },
+  "Register": {
+    "Successfully Register in": "Successfully Register in",
+    "Register": "Register",
+    "Your Full Name": "Your Full Name",
+    "Your Email Address": "Your Email Address",
+    "Your Password": "Your Password",
+    "Your Password Again": "Your Password Again",
+    "Do you have account?": "Do you no have account?"
+  },
+  "Errors": {
     "Full name is required": "Full name is required.",
     "Full name must be at least 3 characters": "Full name must be at least 3 characters.",
     "Phone Number is required": "Phone Number is required.",
     "Phone number must be at least 10 characters": "Phone number must be at least 10 characters.",
+    "Persons is required": "Persons is required.",
+    "Date is required": "Date is required.",
     "Email is required": "Email is required.",
     "Email is invalid": "Email is invalid.",
-    "Persons is required": "Persons is required.",
-    "Date is required": "Date is required."
-  },
-  "Customer": {
-    "What Says Our Customers": "What Says Our Customers"
+    "Password is required": "Password is required.",
+    "Confirm password is required": "Confirm password is required.",
+    "Passwords must match": "Passwords must match.",
+    "Password must be at least 8 characters": "Password must be at least 8 characters.",
+    "Password must contain at least one uppercase, one lowercase, one number and one special character": "Password must contain at least one uppercase, one lowercase, one number and one special character."
   }
 }

@@ -9,6 +9,9 @@
   @apply text-white px-[20px] py-[8px] rounded-3xl bg-red cursor-pointer hover:opacity-70 transition-all text-xs;
 }
 
+.btn-green {
+  @apply text-white px-[20px] py-[8px] rounded-3xl bg-green cursor-pointer hover:opacity-70 transition-all text-xs;
+}
 /*  */
 
 .slick-prev:before,

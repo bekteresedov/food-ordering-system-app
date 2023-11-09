@@ -1,4 +1,5 @@
 import { IInput } from "@/app/types/ui/IInput";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 const Input: React.FC<IInput> = ({
@@ -12,6 +13,8 @@ const Input: React.FC<IInput> = ({
   errorMessage,
   isShowError,
 }) => {
+  const t = useTranslations("Errors");
+
   return (
     <>
       <div>
@@ -23,14 +26,13 @@ const Input: React.FC<IInput> = ({
           value={value}
           type={type}
           className={`outline-none border dark:text-white text-dark rounded w-full text-sm ${className} ${
-            isShowError &&
-            errorMessage &&
-            errorMessage != "Reservation" &&
-            "border-red"
+            isShowError && errorMessage && "border-red"
           }`}
         />
-        {errorMessage && isShowError && errorMessage != "Reservation" && (
-          <p className="text-red text-xs font-mont mt-[2px]">{errorMessage}</p>
+        {errorMessage && isShowError && (
+          <p className="text-red text-xs font-mont mt-[2px]">
+            {t(errorMessage)}
+          </p>
         )}
       </div>
     </>

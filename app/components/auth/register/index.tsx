@@ -7,14 +7,14 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { BiSolidShow } from "react-icons/bi";
 import { useFormik } from "formik";
-import { loginSchema } from "@/app/schema/login";
-import { IFormValues } from "@/app/types/auth/ILogin";
+import { IFormValues } from "@/app/types/auth/IRegister";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
-const Login = () => {
-  const t = useTranslations("Login");
+import { registerSchema } from "@/app/schema/register";
+import { inputs } from "@/app/constants/auth/Register";
+const Register = () => {
+  const t = useTranslations("Register");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleButtonClick = (): void => {
     setShowErrors(true);
@@ -40,10 +40,12 @@ const Login = () => {
 
   const formik = useFormik<IFormValues>({
     initialValues: {
+      fullName: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
-    validationSchema: loginSchema,
+    validationSchema: registerSchema,
     onSubmit,
   });
   return (
@@ -52,60 +54,40 @@ const Login = () => {
         <form onSubmit={formik.handleSubmit}>
           <div className="w-8/12 md:w-4/12 mx-auto flex flex-col">
             <Title className="text-4xl font-bold text-center mb-5">
-              {t("Login")}
+              {t("Register")}
             </Title>
 
-            <Input
-              className="p-3  "
-              type="email"
-              id="email"
-              placeholder={t("Your Email Address")}
-              value={formik.values.email}
-              onChange={(e) => {
-                formik.handleChange(e);
-                setShowErrors(false);
-              }}
-              errorMessage={formik.errors.email}
-              isShowError={showErrors && Object.keys(formik.errors).length > 0}
-            />
-            <div className="relative">
+            {inputs?.map((input, index) => (
               <Input
-                className="p-3 mt-2 "
-                type={`${showPassword ? "password" : "text"}`}
-                id="password"
-                placeholder={t("Your Password")}
-                value={formik.values.password}
+                className="p-3 mt-2"
+                value={formik.values[input.name as keyof IFormValues]}
                 onChange={(e) => {
                   formik.handleChange(e);
                   setShowErrors(false);
                 }}
-                errorMessage={formik.errors.password}
+                id={input.name}
+                key={index}
+                placeholder={t(input.placeholder)}
+                type={input.type}
+                errorMessage={formik.errors[input.name as keyof IFormValues]}
                 isShowError={
                   showErrors && Object.keys(formik.errors).length > 0
                 }
               />
-              <BiSolidShow
-                className="absolute top-[21px] right-4 text-xl"
-                onClick={() => setShowPassword(!showPassword)}
-              />
-            </div>
+            ))}
 
             <Button
               className="btn-red w-full mt-4 uppercase"
               type="submit"
               onClick={handleButtonClick}
             >
-              {t("Login")}
-            </Button>
-            <Button className="mt-3 btn-green uppercase flex items-center justify-center gap-1 dark:bg-dbg">
-              <FcGoogle className="text-base" />
-              Google
+              {t("Register")}
             </Button>
             <Link
-              href={"/register"}
+              href={"/login"}
               className="mt-2 text-xs text-green dark:text-white font-mont font-medium underline"
             >
-              <p>{t("Do you no have account?")}</p>
+              <p>{t("Do you have account?")}</p>
             </Link>
           </div>
         </form>
@@ -114,4 +96,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
