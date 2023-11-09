@@ -53,6 +53,13 @@
     "Your Password Again": "Your Password Again",
     "Do you have account?": "Do you no have account?"
   },
+  "AdminLogin": {
+    "Admin Login": "Admin Login",
+    "Login": "Login",
+    "Home Page": "Home Page",
+    "Your Username": "Your Username",
+    "Your Password": "Your Password"
+  },
   "Errors": {
     "Full name is required": "Full name is required.",
     "Full name must be at least 3 characters": "Full name must be at least 3 characters.",
@@ -65,6 +72,8 @@
     "Password is required": "Password is required.",
     "Confirm password is required": "Confirm password is required.",
     "Passwords must match": "Passwords must match.",
+    "Username is required": "Username is required.",
+    "Username must be at least 3 characters": "Username must be at least 3 characters.",
     "Password must be at least 8 characters": "Password must be at least 8 characters.",
     "Password must contain at least one uppercase, one lowercase, one number and one special character": "Password must contain at least one uppercase, one lowercase, one number and one special character."
   }

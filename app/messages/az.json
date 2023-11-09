@@ -53,6 +53,13 @@
     "Your Password Again": "Təkrar Parolunuz",
     "Do you have account?": "Hesabınız var?"
   },
+  "AdminLogin": {
+    "Admin Login": "Admin Giriş",
+    "Login": "Giriş",
+    "Home Page": "Əsas səhifə",
+    "Your Username": "İstifadəçi adın",
+    "Your Password": "Parolunuz"
+  },
   "Errors": {
     "Full name is required": "Ad və soyad boş buraxılamaz.",
     "Full name must be at least 3 characters": "Ad və soyad minimum 3 simvoldan ibarət olmalıdır.",
@@ -66,6 +73,8 @@
     "Confirm password is required": "Təsdiq parol boş buraxılamaz.",
     "Passwords must match": "Parollar uyğun olmalıdır.",
     "Password is required": "Parol boş buraxılamaz.",
+    "Username is required": "İstifadəçi adı boş buraxılamaz.",
+    "Username must be at least 3 characters": "İstifadəçi adı minimum 3 simvoldan ibarət olmalıdır.",
     "Password must be at least 8 characters": "Parol minimum 8 simvoldan ibarət olmalıdır.",
     "Password must contain at least one uppercase, one lowercase, one number and one special character": "Parolda ən azı bir böyük hərf, bir kiçik hərf, bir rəqəm və bir xüsusi simvol olmalıdır."
   }
