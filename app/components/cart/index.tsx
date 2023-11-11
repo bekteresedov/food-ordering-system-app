@@ -1,7 +1,6 @@
 import React from "react";
 import Title from "../UI/title";
 import Button from "../UI/button";
-import { IoBagCheckOutline } from "react-icons/io5";
 import Image from "next/image";
 import pizza from "./assets/images/pizza6.png";
 const Cart = () => {
@@ -20,7 +19,7 @@ const Cart = () => {
                     <th>Quantity</th>
                   </tr>
                 </thead>
-                <tbody className="text-center bg-green text-[14px] hover:bg-red transition-all">
+                <tbody className="text-center bg-green dark:bg-dbg  text-[14px] hover:bg-red dark:hover:bg-red transition-all">
                   <tr>
                     <td className="flex items-center gap-1 justify-center p-4">
                       <Image src={pizza} alt="pizza" width={50} height={50} />
@@ -42,7 +41,7 @@ const Cart = () => {
               </table>
             </div>
           </div>
-          <div className="w-full md:w-3/12 bg-green pt-[50px] md:pt-[100px] pb-[80px] md:pb-[140px] flex flex-col items-center text-start">
+          <div className="w-full md:w-3/12 bg-green dark:bg-dbg pt-[50px] md:pt-[100px] pb-[80px] md:pb-[140px] flex flex-col items-center text-start">
             <ul className="font-mont text-[15px] font-semibold ">
               <li>
                 <Title className="uppercase text-2xl ">Cart Total</Title>
