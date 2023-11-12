@@ -1,7 +1,10 @@
 import React from "react";
-import Title from "../UI/title";
-import Button from "../UI/button";
 import Image from "next/image";
+import paid from "./assets/images/paid.png";
+import bake from "./assets/images/bake.png";
+import bike from "./assets/images/bike.png";
+import delivered from "./assets/images/delivered.png";
+
 const Order = () => {
   return (
     <>
@@ -31,12 +34,47 @@ const Order = () => {
                   </tbody>
                 </table>
               </div>
-
-              <div className="bg-green dark:bg-dbg mt-10 flex justify-between items-center px-5 py-10">
-                <div>12</div>
-                <div>12</div>
-                <div>12</div>
-                <div>12</div>
+              <div className="bg-[#F05941]  mt-10 flex justify-between items-center p-10 min-w-[800px]">
+                <div className="relative flex flex-col items-center font-mont text-[14px] font-medium gap-1">
+                  <Image
+                    src={paid}
+                    alt=""
+                    width={40}
+                    height={40}
+                    objectFit="contain"
+                  />
+                  <span>Payment</span>
+                </div>
+                <div className="relative flex flex-col animate-pulse items-center font-mont text-[14px] font-medium gap-1">
+                  <Image
+                    src={bake}
+                    alt=""
+                    width={40}
+                    height={40}
+                    objectFit="contain"
+                  />
+                  <span>Preparing</span>
+                </div>
+                <div className="relative flex flex-col items-center font-mont text-[14px] font-medium gap-1">
+                  <Image
+                    src={bike}
+                    alt=""
+                    width={40}
+                    height={40}
+                    objectFit="contain"
+                  />
+                  <span>On the way</span>
+                </div>
+                <div className="relative flex flex-col items-center font-mont text-[14px] font-medium gap-1">
+                  <Image
+                    src={delivered}
+                    alt=""
+                    width={40}
+                    height={40}
+                    objectFit="contain"
+                  />
+                  <span>Delivered</span>
+                </div>
               </div>
             </div>
           </div>
