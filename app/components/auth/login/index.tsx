@@ -10,7 +10,9 @@ import { useFormik } from "formik";
 import { loginSchema } from "@/app/schema/login";
 import { IFormValues } from "@/app/types/auth/ILogin";
 import { useTranslations } from "next-intl";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const t = useTranslations("Login");
   const [showErrors, setShowErrors] = useState<boolean>(false);
@@ -109,6 +111,18 @@ const Login = () => {
             </Link>
           </div>
         </form>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </section>
     </>
   );

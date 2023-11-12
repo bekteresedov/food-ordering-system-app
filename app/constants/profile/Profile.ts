@@ -1,4 +1,4 @@
-import { IProfileContent } from "@/app/types/profile/IProfile";
+import IInputListSettings, { IProfileContent } from "@/app/types/profile/IProfile";
 import { FaHome } from "react-icons/fa"
 import { IoKey } from 'react-icons/io5'
 import { PiMotorcycleFill } from "react-icons/pi"
@@ -22,3 +22,43 @@ export const profileContentList: IProfileContent[] = [
         title: "Exit"
     }
 ]
+
+
+export const InputListsettings: IInputListSettings[] = [
+    {
+        id: 1,
+        name: "fullName",
+        type: "text",
+        placeholder: "Your Full Name",
+    },
+    {
+        id: 2,
+        name: "phoneNumber",
+        type: "number",
+        placeholder: "Your Phone Number",
+    },
+    {
+        id: 3,
+        name: "email",
+        type: "email",
+        placeholder: "Your Email Address",
+    },
+    {
+        id: 4,
+        name: "address",
+        type: "text",
+        placeholder: "Your Address",
+    },
+    {
+        id: 5,
+        name: "job",
+        type: "text",
+        placeholder: "Your Job",
+    },
+    {
+        id: 6,
+        name: "bio",
+        type: "text",
+        placeholder: "Your Bio",
+    },
+];

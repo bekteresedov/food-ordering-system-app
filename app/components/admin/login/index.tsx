@@ -9,8 +9,10 @@ import { BiSolidShow } from "react-icons/bi";
 import { useFormik } from "formik";
 import { IFormValues } from "@/app/types/admin/IAdminLogin";
 import { useTranslations } from "next-intl";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { adminLoginSchema } from "@/app/schema/adminLogin";
+import "react-toastify/dist/ReactToastify.css";
+
 const AdminLogin = () => {
   const t = useTranslations("AdminLogin");
   const [showErrors, setShowErrors] = useState<boolean>(false);
@@ -106,6 +108,18 @@ const AdminLogin = () => {
             </Link>
           </div>
         </form>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </section>
     </>
   );
