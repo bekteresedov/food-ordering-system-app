@@ -1,17 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import Title from "../../UI/title";
-import { IFormValuesSettings } from "@/app/types/profile/IProfile";
+import {
+  IFormValuesPassword,
+  IFormValuesSettings,
+} from "@/app/types/profile/IProfile";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 import { profileSchema } from "@/app/schema/profileSettings";
-import { InputListsettings } from "@/app/constants/profile/Profile";
+import {
+  InputListPassword,
+  InputListsettings,
+} from "@/app/constants/profile/Profile";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
+import { newPasswordSchema } from "@/app/schema/profilePassword";
 
-const Settings = () => {
+const Password = () => {
   const t = useTranslations("Reservation");
   const [showErrors, setShowErrors] = useState<boolean>(false);
 
@@ -20,7 +27,7 @@ const Settings = () => {
     // formik.handleSubmit();
   };
 
-  const onSubmit = async (values: IFormValuesSettings, actions: any) => {
+  const onSubmit = async (values: IFormValuesPassword, actions: any) => {
     notify();
     // await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log(values);
@@ -39,16 +46,12 @@ const Settings = () => {
       theme: "colored",
     });
 
-  const formik = useFormik<IFormValuesSettings>({
+  const formik = useFormik<IFormValuesPassword>({
     initialValues: {
-      fullName: "",
-      phoneNumber: "",
-      email: "",
-      job: "",
-      address: "",
-      bio: "",
+      newPassword: "",
+      confirmPassword: "",
     },
-    validationSchema: profileSchema,
+    validationSchema: newPasswordSchema,
     onSubmit,
   });
   return (
@@ -56,16 +59,16 @@ const Settings = () => {
       <section>
         <div className="mb-20">
           <Title className="text-2xl md:text-3xl font-semibold mt-0 md:mt-6 mb-4">
-            Account Settings
+            Password
           </Title>
           <div>
             <form onSubmit={formik.handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 gap-3">
-                {InputListsettings?.map((input, index) => (
+                {InputListPassword?.map((input, index) => (
                   <Input
                     className="p-3 w-full "
                     value={
-                      formik.values[input.name as keyof IFormValuesSettings]
+                      formik.values[input.name as keyof IFormValuesPassword]
                     }
                     onChange={(e) => {
                       formik.handleChange(e);
@@ -76,7 +79,7 @@ const Settings = () => {
                     placeholder={t(input.placeholder)}
                     type={input.type}
                     errorMessage={
-                      formik.errors[input.name as keyof IFormValuesSettings]
+                      formik.errors[input.name as keyof IFormValuesPassword]
                     }
                     isShowError={
                       showErrors && Object.keys(formik.errors).length > 0
@@ -111,4 +114,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Password;

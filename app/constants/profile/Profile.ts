@@ -1,4 +1,4 @@
-import IInputListSettings, { IProfileContent } from "@/app/types/profile/IProfile";
+import IInputListSettings, { IInputListPassword, IProfileContent } from "@/app/types/profile/IProfile";
 import { FaHome } from "react-icons/fa"
 import { IoKey } from 'react-icons/io5'
 import { PiMotorcycleFill } from "react-icons/pi"
@@ -61,4 +61,20 @@ export const InputListsettings: IInputListSettings[] = [
         type: "text",
         placeholder: "Your Bio",
     },
+];
+
+export const InputListPassword: IInputListPassword[] = [
+    {
+        id: 1,
+        name: "password",
+        type: "text",
+        placeholder: "Your Password",
+    },
+    {
+        id: 2,
+        name: "confirmPassword",
+        type: "password",
+        placeholder: "Your Password Again",
+    },
+
 ];

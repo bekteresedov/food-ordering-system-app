@@ -4,6 +4,8 @@ import { IProfile } from "@/app/types/profile/IProfile";
 import Image from "next/image";
 import React, { useState } from "react";
 import Settings from "../settings";
+import Password from "../password";
+import Order from "../order";
 
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
@@ -41,7 +43,15 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
               ))}
             </ul>
           </div>
-          <div className="w-full">{tabs == 0 && <Settings />}</div>
+          <div className="w-full">
+            {tabs == 0 ? (
+              <Settings />
+            ) : tabs == 1 ? (
+              <Password />
+            ) : tabs == 2 ? (
+              <Order />
+            ) : null}
+          </div>
         </div>
       </section>
     </>
