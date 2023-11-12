@@ -34,7 +34,7 @@ const Order = () => {
                   </tbody>
                 </table>
               </div>
-              <div className="bg-[#F05941]  mt-10 flex justify-between items-center p-10 min-w-[800px]">
+              <div className="bg-[#F05941]  mt-10 flex justify-between items-center p-7 min-w-[800px]">
                 <div className="relative flex flex-col items-center font-mont text-[14px] font-medium gap-1">
                   <Image
                     src={paid}
