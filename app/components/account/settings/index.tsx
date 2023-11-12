@@ -54,8 +54,8 @@ const Settings = () => {
   return (
     <>
       <section>
-        <div>
-          <Title className="text-3xl font-semibold mt-6 mb-4">
+        <div className="mb-20">
+          <Title className="text-3xl font-semibold mt-0 md:mt-6 mb-4">
             Account Settings
           </Title>
           <div>
@@ -86,7 +86,7 @@ const Settings = () => {
               </div>
               <Button
                 type="submit"
-                className="btn-red  w-fit mt-2"
+                className="btn-red  w-fit mt-3"
                 onClick={handleButtonClick}
               >
                 {t("Update")}
