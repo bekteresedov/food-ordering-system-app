@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 import { profileSchema } from "@/app/schema/profileSettings";
-import { InputListsettings } from "@/app/constants/profile/Profile";
+import { InputListsettings } from "@/app/constants/profile/profile";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";

@@ -11,7 +11,7 @@ import { IFormValues } from "@/app/types/auth/IRegister";
 import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import { registerSchema } from "@/app/schema/register";
-import { inputs } from "@/app/constants/auth/Register";
+import { inputs } from "@/app/constants/auth/register";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {

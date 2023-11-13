@@ -5,7 +5,8 @@ import React, { useState } from "react";
 import admin from "./assets/images/Microsoft_Account.svg.png";
 import AdminProducts from "../product";
 import AdminOrder from "../order";
-import AdminCategory from "../adminCategory";
+import AdminCategory from "../category";
+import AdminFooter from "../footer";
 
 const AdminProfile: React.FC = () => {
   const [tabs, setTabs] = useState<number>(0);
@@ -50,6 +51,8 @@ const AdminProfile: React.FC = () => {
               <AdminOrder />
             ) : tabs == 2 ? (
               <AdminCategory />
+            ) : tabs == 3 ? (
+              <AdminFooter />
             ) : null}
           </div>
         </div>

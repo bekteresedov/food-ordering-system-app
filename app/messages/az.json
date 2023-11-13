@@ -53,6 +53,16 @@
     "Your Password Again": "Təkrar Parolunuz",
     "Do you have account?": "Hesabınız var?"
   },
+  "Order": {
+    "Order id": "sifariş id",
+    "Customer": "müştəri",
+    "Address": "Ünvan",
+    "Total": "Toplam",
+    "Payment": "Ödəniş",
+    "Preparing": "Hazırlanır",
+    "On the way": "Yolda",
+    "Delivered": "Çatdırıldı"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Giriş",
     "Login": "Giriş",

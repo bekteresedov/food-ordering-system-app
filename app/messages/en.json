@@ -53,6 +53,16 @@
     "Your Password Again": "Your Password Again",
     "Do you have account?": "Do you no have account?"
   },
+  "Order": {
+    "Order id": "Order id",
+    "Customer": "Customer",
+    "Address": "Address",
+    "Total": "Total",
+    "Payment": "Payment",
+    "Preparing": "Preparing",
+    "On the way": "On the way",
+    "Delivered": "Delivered"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Login",
     "Login": "Login",

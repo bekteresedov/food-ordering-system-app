@@ -1,11 +1,14 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import paid from "./assets/images/paid.png";
 import bake from "./assets/images/bake.png";
 import bike from "./assets/images/bike.png";
 import delivered from "./assets/images/delivered.png";
+import { useTranslations } from "next-intl";
 
 const Order = () => {
+  const t = useTranslations("Order");
   return (
     <>
       <section>
@@ -16,10 +19,9 @@ const Order = () => {
                 <table className="bg-[#162A2D] w-full font-mont min-w-[800px]">
                   <thead className="uppercase text-xs">
                     <tr>
-                      <th className="p-3">Order id</th>
-                      <th>Customer</th>
-                      <th>Address</th>
-                      <th>Total</th>
+                      <th className="p-3">{t("Order id")}</th>
+                      <th>{t("Customer")}</th>
+                      <th>{t("Address")}</th>
                     </tr>
                   </thead>
                   <tbody className="text-center bg-green dark:bg-dbg  text-[14px] hover:bg-red dark:hover:bg-red transition-all">
@@ -43,7 +45,7 @@ const Order = () => {
                     height={40}
                     objectFit="contain"
                   />
-                  <span>Payment</span>
+                  <span>{t("Payment")}</span>
                 </div>
                 <div className="relative flex flex-col animate-pulse items-center font-mont text-[14px] font-medium gap-1">
                   <Image
@@ -53,7 +55,7 @@ const Order = () => {
                     height={40}
                     objectFit="contain"
                   />
-                  <span>Preparing</span>
+                  <span>{t("Preparing")}</span>
                 </div>
                 <div className="relative flex flex-col items-center font-mont text-[14px] font-medium gap-1">
                   <Image
@@ -63,7 +65,7 @@ const Order = () => {
                     height={40}
                     objectFit="contain"
                   />
-                  <span>On the way</span>
+                  <span>{t("On the way")}</span>
                 </div>
                 <div className="relative flex flex-col items-center font-mont text-[14px] font-medium gap-1">
                   <Image
@@ -73,7 +75,7 @@ const Order = () => {
                     height={40}
                     objectFit="contain"
                   />
-                  <span>Delivered</span>
+                  <span>{t("Delivered")}</span>
                 </div>
               </div>
             </div>

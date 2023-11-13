@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Title from "../UI/title";
-import { inputs } from "@/app/constants/reservation/Reservation";
+import { inputs } from "@/app/constants/reservation/reservation";
 import Input from "../UI/input";
 import Button from "../UI/button";
 import { useTranslations } from "next-intl";

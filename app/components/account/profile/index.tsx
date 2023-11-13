@@ -1,5 +1,5 @@
 "use client";
-import { profileContentList } from "@/app/constants/profile/Profile";
+import { profileContentList } from "@/app/constants/profile/profile";
 import { IProfile } from "@/app/types/profile/IProfile";
 import Image from "next/image";
 import React, { useState } from "react";
