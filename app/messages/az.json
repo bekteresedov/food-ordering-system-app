@@ -89,7 +89,7 @@
     "Your Job": "İşiniz",
     "Your Bio": "Bio",
     "Update": "Yenilə",
-    "successfully": "HesabınızUğurla Yeniləndi"
+    "successfully": "Hesabınız Uğurla Yeniləndi"
   },
   "AccountPassword": {
     "Password": "Parol",
@@ -105,6 +105,49 @@
     "Date": "Tarix",
     "Total": "Toplam",
     "Status": "Vəziyyət"
+  },
+  "AdminAccount": {
+    "Products": "Məhsul",
+    "Orders": "Sifarişlər",
+    "Categories": "Kateqoriyalar",
+    "Footer": "Altbilgi",
+    "Exit": "Çıx"
+  },
+  "AdminProduct": {
+    "Products": "Məhsullar",
+    "id": "id",
+    "image": "şəkil",
+    "title": "başlıq",
+    "price": "qiymət",
+    "action": "əməliyyat",
+    "delete": "Sil"
+  },
+  "AdminOrder": {
+    "Orders": "Sifarişlər",
+    "Product id": "Məhsul id",
+    "Customer": "Müştəri",
+    "Total": "Toplam",
+    "Payment": "Ödəniş",
+    "Status": "Vəziyyət",
+    "Action": "əməliyyat",
+    "Next Stage": "Növbəti Mərhələ"
+  },
+  "AdminCategory": {
+    "Category": "Kateqoriya",
+    "Add": "Əlavə Edin",
+    "Add New Category": "Yeni Kateqoriya əlavə edin",
+    "Delete": "Sil"
+  },
+  "AdminFooter": {
+    "Footer Settings": "Altbilgi Parametrləri",
+    "Your Location": "Məkanınız",
+    "Your Email Address": "E-poçt ünvanınız",
+    "Your Description": "Təsviriniz",
+    "Your Phone Number": "Telefon nömrəniz",
+    "Update Day": "Yeniləmə Gününüz",
+    "Update Time": "Yeniləmə Vaxtınız",
+    "Update": "Yenilə",
+    "Successfully": "AltBilgi Uğurla Yeniləndi"
   },
   "AdminLogin": {
     "Admin Login": "Admin Giriş",
@@ -129,6 +172,10 @@
     "Username is required": "İstifadəçi adı boş buraxılamaz.",
     "Job is required": "İş boş buraxılamaz.",
     "Bio is required": "Bio boş buraxılamaz.",
+    "Location is required": "Məkan boş buraxılamaz.",
+    "Description is required": "Təsvir boş buraxılamaz.",
+    "Day is required": "Gün boş buraxılamaz.",
+    "Time is required": "Vaxt boş buraxılamaz.",
     "Username must be at least 3 characters": "İstifadəçi adı minimum 3 simvoldan ibarət olmalıdır.",
     "Password must be at least 8 characters": "Parol minimum 8 simvoldan ibarət olmalıdır.",
     "Password must contain at least one uppercase, one lowercase, one number and one special character": "Parolda ən azı bir böyük hərf, bir kiçik hərf, bir rəqəm və bir xüsusi simvol olmalıdır."

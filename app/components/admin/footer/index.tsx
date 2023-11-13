@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AdminFooter = () => {
   const [showErrors, setShowErrors] = useState<boolean>(false);
-  const t = useTranslations("Reservation");
+  const t = useTranslations("AdminFooter");
 
   const handleButtonClick = (): void => {
     setShowErrors(true);
@@ -27,7 +27,7 @@ const AdminFooter = () => {
   };
 
   const notify = () =>
-    toast.success("Successfully completed!", {
+    toast.success(t("Successfully"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -55,7 +55,7 @@ const AdminFooter = () => {
       <section>
         <div className="mb-5">
           <Title className="text-2xl md:text-3xl font-semibold mt-0 md:mt-6 mb-4">
-            Footer Settings
+            {t("Footer Settings")}
           </Title>
         </div>
         <div>
@@ -87,7 +87,7 @@ const AdminFooter = () => {
               className="btn-red  w-fit mt-3"
               onClick={handleButtonClick}
             >
-              {"Update"}
+              {t("Update")}
             </Button>
           </form>
         </div>

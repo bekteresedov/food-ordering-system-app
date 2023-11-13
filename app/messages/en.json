@@ -106,6 +106,49 @@
     "Total": "Total",
     "Status": "Status"
   },
+  "AdminAccount": {
+    "Products": "Products",
+    "Orders": "Orders",
+    "Categories": "Categories",
+    "Footer": "Footer",
+    "Exit": "Exit"
+  },
+  "AdminProduct": {
+    "Products": "Products",
+    "id": "id",
+    "image": "image",
+    "title": "title",
+    "price": "price",
+    "action": "action",
+    "delete": "Delete"
+  },
+  "AdminOrder": {
+    "Orders": "Orders",
+    "Product id": "Product id",
+    "Customer": "Customer",
+    "Total": "Total",
+    "Payment": "Payment",
+    "Status": "Status",
+    "Action": "Action",
+    "Next Stage": "Next Stage"
+  },
+  "AdminCategory": {
+    "Category": "Category",
+    "Add": "Add",
+    "Add New Category": "Add New Category",
+    "Delete": "Delete"
+  },
+  "AdminFooter": {
+    "Footer Settings": "Footer Settings",
+    "Your Location": "Your Location",
+    "Your Email Address": "Your Email Address",
+    "Your Description": "Your Description",
+    "Your Phone Number": "Your Phone Number",
+    "Update Day": "Update Day",
+    "Update Time": "Update Time",
+    "Update": "Update",
+    "Successfully": "Footer Updated Successfully"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Login",
     "Login": "Login",
@@ -129,6 +172,10 @@
     "Username must be at least 3 characters": "Username must be at least 3 characters.",
     "Password must be at least 8 characters": "Password must be at least 8 characters.",
     "Job is required": "Job is required.",
+    "Location is required": "Location is required",
+    "Description is required": "Description is required",
+    "Day is required": "Day is required",
+    "Time is required": "Time is required",
     "Bio is required": "Bio is required.",
     "Password must contain at least one uppercase, one lowercase, one number and one special character": "Password must contain at least one uppercase, one lowercase, one number and one special character."
   }

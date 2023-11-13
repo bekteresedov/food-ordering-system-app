@@ -32,7 +32,6 @@ export const adminProfileContentList: IAdminProfileContent[] = [
 ]
 
 
-import IInputList from "@/app/types/reservation/IReservation";
 
 export const adminInputs: IAdminInputList[] = [
     {

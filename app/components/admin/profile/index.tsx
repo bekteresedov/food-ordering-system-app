@@ -7,9 +7,11 @@ import AdminProducts from "../product";
 import AdminOrder from "../order";
 import AdminCategory from "../category";
 import AdminFooter from "../footer";
+import { useTranslations } from "next-intl";
 
 const AdminProfile: React.FC = () => {
   const [tabs, setTabs] = useState<number>(0);
+  const t = useTranslations("AdminAccount");
 
   return (
     <>
@@ -38,7 +40,7 @@ const AdminProfile: React.FC = () => {
                 >
                   {<element.iconType />}
                   <span className="text-[13px] font-semibold">
-                    {element.title}
+                    {t(element.title)}
                   </span>
                 </li>
               ))}
