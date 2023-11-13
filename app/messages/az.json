@@ -74,6 +74,38 @@
     "Total": "Toplam",
     "Checkout now": "İndi yoxlayın"
   },
+  "Profile": {
+    "Account": "Hesab",
+    "Password": "Parol",
+    "Orders": "Sifarişlər",
+    "Exit": "Çıx"
+  },
+  "Account": {
+    "Account Settings": "Hesab Parametrləri",
+    "Your Full Name": "Ad və soyadın",
+    "Your Phone Number": "Telefon nömrəniz",
+    "Your Email Address": "E-poçt ünvanınız",
+    "Your Address": "ünvanınız",
+    "Your Job": "İşiniz",
+    "Your Bio": "Bio",
+    "Update": "Yenilə",
+    "successfully": "HesabınızUğurla Yeniləndi"
+  },
+  "AccountPassword": {
+    "Password": "Parol",
+    "Successfully": "Parolunuz Uğurla Yeniləndi",
+    "Update": "Yenilə",
+    "Your Password": "Parolunuz",
+    "Your Password Again": "Təkrar Parolunuz"
+  },
+  "AccountOrders": {
+    "Orders": "Sifarişlər",
+    "id": "id",
+    "Address": "Ünvan",
+    "Date": "Tarix",
+    "Total": "Toplam",
+    "Status": "Vəziyyət"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Giriş",
     "Login": "Giriş",
@@ -95,6 +127,8 @@
     "Passwords must match": "Parollar uyğun olmalıdır.",
     "Password is required": "Parol boş buraxılamaz.",
     "Username is required": "İstifadəçi adı boş buraxılamaz.",
+    "Job is required": "İş boş buraxılamaz.",
+    "Bio is required": "Bio boş buraxılamaz.",
     "Username must be at least 3 characters": "İstifadəçi adı minimum 3 simvoldan ibarət olmalıdır.",
     "Password must be at least 8 characters": "Parol minimum 8 simvoldan ibarət olmalıdır.",
     "Password must contain at least one uppercase, one lowercase, one number and one special character": "Parolda ən azı bir böyük hərf, bir kiçik hərf, bir rəqəm və bir xüsusi simvol olmalıdır."

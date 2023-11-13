@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { newPasswordSchema } from "@/app/schema/profilePassword";
 
 const Password = () => {
-  const t = useTranslations("Reservation");
+  const t = useTranslations("AccountPassword");
   const [showErrors, setShowErrors] = useState<boolean>(false);
 
   const handleButtonClick = (): void => {
@@ -35,7 +35,7 @@ const Password = () => {
   };
 
   const notify = () =>
-    toast.success(t("Successfully completed!"), {
+    toast.success(t("Successfully"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -48,7 +48,7 @@ const Password = () => {
 
   const formik = useFormik<IFormValuesPassword>({
     initialValues: {
-      newPassword: "",
+      password: "",
       confirmPassword: "",
     },
     validationSchema: newPasswordSchema,
@@ -59,7 +59,7 @@ const Password = () => {
       <section>
         <div className="mb-20">
           <Title className="text-2xl md:text-3xl font-semibold mt-0 md:mt-6 mb-4">
-            Password
+            {t("Password")}
           </Title>
           <div>
             <form onSubmit={formik.handleSubmit}>

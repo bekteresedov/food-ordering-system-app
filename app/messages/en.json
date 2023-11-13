@@ -74,6 +74,38 @@
     "Total": "Total",
     "Checkout now": "Checkout Now"
   },
+  "Profile": {
+    "Account": "Account",
+    "Password": "Password",
+    "Orders": "Orders",
+    "Exit": "Exit"
+  },
+  "Account": {
+    "Account Settings": "Account Settings",
+    "Your Full Name": "Your Full Name",
+    "Your Phone Number": "Your Phone Number",
+    "Your Email Address": "Your Email Address",
+    "Your Address": "Your Address",
+    "Your Job": "Your Job",
+    "Your Bio": "Your Bio",
+    "Update": "Update",
+    "successfully": "Your Account has been Successfully Renewed"
+  },
+  "AccountPassword": {
+    "Password": "Password",
+    "Successfully": "Your password has been successfully renewed",
+    "Update": "Update",
+    "Your Password": "Your Password",
+    "Your Password Again": "Your Password Again"
+  },
+  "AccountOrders": {
+    "Orders": "Orders",
+    "id": "id",
+    "Address": "Address",
+    "Date": "Date",
+    "Total": "Total",
+    "Status": "Status"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Login",
     "Login": "Login",
@@ -96,6 +128,8 @@
     "Username is required": "Username is required.",
     "Username must be at least 3 characters": "Username must be at least 3 characters.",
     "Password must be at least 8 characters": "Password must be at least 8 characters.",
+    "Job is required": "Job is required.",
+    "Bio is required": "Bio is required.",
     "Password must contain at least one uppercase, one lowercase, one number and one special character": "Password must contain at least one uppercase, one lowercase, one number and one special character."
   }
 }

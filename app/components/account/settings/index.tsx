@@ -12,7 +12,7 @@ import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
 
 const Settings = () => {
-  const t = useTranslations("Reservation");
+  const t = useTranslations("Account");
   const [showErrors, setShowErrors] = useState<boolean>(false);
 
   const handleButtonClick = (): void => {
@@ -23,12 +23,11 @@ const Settings = () => {
   const onSubmit = async (values: IFormValuesSettings, actions: any) => {
     notify();
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
     actions.resetForm();
   };
 
   const notify = () =>
-    toast.success(t("Successfully completed!"), {
+    toast.success(t("successfully"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -56,7 +55,7 @@ const Settings = () => {
       <section>
         <div className="mb-20">
           <Title className="text-2xl md:text-3xl font-semibold mt-0 md:mt-6 mb-4">
-            Account Settings
+            {t("Account Settings")}
           </Title>
           <div>
             <form onSubmit={formik.handleSubmit}>

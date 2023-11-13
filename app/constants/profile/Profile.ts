@@ -67,7 +67,7 @@ export const InputListPassword: IInputListPassword[] = [
     {
         id: 1,
         name: "password",
-        type: "text",
+        type: "password",
         placeholder: "Your Password",
     },
     {

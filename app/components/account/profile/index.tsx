@@ -6,9 +6,11 @@ import React, { useState } from "react";
 import Settings from "../settings";
 import Password from "../password";
 import Order from "../order";
+import { useTranslations } from "next-intl";
 
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
+  const t = useTranslations("Profile");
 
   return (
     <>
@@ -37,7 +39,7 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
                 >
                   {<element.iconType />}
                   <span className="text-[13px] font-semibold">
-                    {element.title}
+                    {t(element.title)}
                   </span>
                 </li>
               ))}
