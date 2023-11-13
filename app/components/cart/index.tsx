@@ -1,9 +1,13 @@
+"use client";
 import React from "react";
 import Title from "../UI/title";
 import Button from "../UI/button";
 import Image from "next/image";
 import pizza from "./assets/images/pizza6.png";
+import { useTranslations } from "next-intl";
 const Cart = () => {
+  const t = useTranslations("Cart");
+
   return (
     <>
       <section>
@@ -13,10 +17,10 @@ const Cart = () => {
               <table className="bg-[#162A2D] w-full font-mont min-w-[800px]">
                 <thead className="uppercase text-xs">
                   <tr>
-                    <th className="p-3">Product</th>
-                    <th>Extras</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th className="p-3">{t("Product")}</th>
+                    <th>{t("Extras")}</th>
+                    <th>{t("Price")}</th>
+                    <th>{t("Quantity")}</th>
                   </tr>
                 </thead>
                 <tbody className="text-center bg-green dark:bg-dbg  text-[14px] hover:bg-red dark:hover:bg-red transition-all">
@@ -44,23 +48,20 @@ const Cart = () => {
           <div className="w-full md:w-3/12 bg-green dark:bg-dbg pt-[50px] md:pt-[100px] pb-[80px] md:pb-[140px] flex flex-col items-center text-start">
             <ul className="font-mont text-[15px] font-semibold ">
               <li>
-                <Title className="uppercase text-2xl ">Cart Total</Title>
+                <Title className="uppercase text-2xl ">{t("Cart Total")}</Title>
               </li>
               <li className="mt-5">
-                Subtotal:
-                <span className="font-normal ml-1">$12</span>
+                {t("Subtotal")}:<span className="font-normal ml-1">$12</span>
               </li>
               <li className="mt-1 ">
-                Discount:
-                <span className="font-normal ml-1">$12</span>
+                {t("Discount")}:<span className="font-normal ml-1">$12</span>
               </li>
               <li className="mt-1 ">
-                Total:
-                <span className="font-normal ml-1">$12</span>
+                {t("Total")}:<span className="font-normal ml-1">$12</span>
               </li>
               <li>
                 <Button className="uppercase btn-red mt-2 ">
-                  Checkout now
+                  {t("Checkout now")}
                 </Button>
               </li>
             </ul>

@@ -63,6 +63,17 @@
     "On the way": "Yolda",
     "Delivered": "Çatdırıldı"
   },
+  "Cart": {
+    "Product": "Məhsul",
+    "Extras": "Əlavələr",
+    "Price": "Price",
+    "Quantity": "Qiymət",
+    "Cart Total": "Səbət Toplam",
+    "Subtotal": "Ara Cəmi",
+    "Discount": "Endirim",
+    "Total": "Toplam",
+    "Checkout now": "İndi yoxlayın"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Giriş",
     "Login": "Giriş",

@@ -63,6 +63,17 @@
     "On the way": "On the way",
     "Delivered": "Delivered"
   },
+  "Cart": {
+    "Product": "Product",
+    "Extras": "Extras",
+    "Price": "Price",
+    "Quantity": "Quantity",
+    "Cart Total": "Cart Total",
+    "Subtotal": "Subtotal",
+    "Discount": "Discount",
+    "Total": "Total",
+    "Checkout now": "Checkout Now"
+  },
   "AdminLogin": {
     "Admin Login": "Admin Login",
     "Login": "Login",
