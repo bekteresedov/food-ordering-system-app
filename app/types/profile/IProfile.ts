@@ -36,7 +36,7 @@ export interface IInputListPassword extends IBaseInput {
 }
 
 export interface IFormValuesPassword {
-    newPassword: string
+    password: string
     confirmPassword: string;
 
 }
