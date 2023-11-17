@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { registerSchema } from "@/app/schema/register";
 import { inputs } from "@/app/constants/auth/register";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Register = () => {
   const t = useTranslations("Register");
@@ -23,8 +24,20 @@ const Register = () => {
   };
 
   const onSubmit = async (values: IFormValues, actions: any) => {
-    notify();
-    console.log(values);
+    try {
+      console.log(values);
+      const res = await axios.post(`http://localhost:5000/api/auth/register`, {
+        fullname: values.fullName,
+        email: values.email,
+        password: values.password,
+        confirmPassword: values.confirmPassword,
+      });
+      if (res.status === 200) {
+        notify();
+      }
+    } catch (err: any) {
+      console.log(err);
+    }
     actions.resetForm();
   };
 
