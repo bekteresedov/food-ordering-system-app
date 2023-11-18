@@ -4,7 +4,6 @@ import Title from "../../UI/title";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
 import { BiSolidShow } from "react-icons/bi";
 import { useFormik } from "formik";
 import { loginSchema } from "@/app/schema/login";
@@ -12,20 +11,39 @@ import { IFormValues } from "@/app/types/auth/ILogin";
 import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import cookie from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const t = useTranslations("Login");
   const [showErrors, setShowErrors] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
+  const [error, setError] = useState<string>("s");
+  const { push, refresh } = useRouter();
   const handleButtonClick = (): void => {
     setShowErrors(true);
+    setError("");
   };
 
   const onSubmit = async (values: IFormValues, actions: any) => {
-    notify();
-    console.log(values);
-    actions.resetForm();
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/api/auth/login`,
+        values
+      );
+      if (res.status === 200) {
+        cookie.set("token", res.data.data.accessToken, { expires: 1 });
+        cookie.set("id", res.data.data.id, { expires: 1 });
+        push("/home");
+        refresh();
+        notify();
+        actions.resetForm();
+      }
+    } catch (err: any) {
+      console.log(err);
+      setError(err.response.data.message ? err.response.data.message : "");
+    }
   };
 
   const notify = () =>
@@ -91,6 +109,9 @@ const Login = () => {
                 onClick={() => setShowPassword(!showPassword)}
               />
             </div>
+            {showErrors && (
+              <p className="text-red text-xs font-mont mt-[2px]">{error}</p>
+            )}
 
             <Button
               className="btn-red w-full mt-4 uppercase"
@@ -98,10 +119,6 @@ const Login = () => {
               onClick={handleButtonClick}
             >
               {t("Login")}
-            </Button>
-            <Button className="mt-3 btn-green uppercase flex items-center justify-center gap-1 dark:bg-dbg">
-              <FcGoogle className="text-base" />
-              Google
             </Button>
             <Link
               href={"/register"}

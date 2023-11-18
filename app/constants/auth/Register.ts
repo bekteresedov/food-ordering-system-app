@@ -2,7 +2,7 @@ import IInputList from '../../types/auth/ILogin';
 export const inputs: IInputList[] = [
     {
         id: 1,
-        name: "fullName",
+        name: "fullname",
         type: "text",
         placeholder: "Your Full Name",
     },

@@ -10,6 +10,8 @@ import Button from "../../UI/button";
 import ThemeSwitcher from "../../theme/themeSwitcher";
 import { useTranslations } from "next-intl";
 import LangSwitch from "../../lang";
+import Link from "next/link";
+import cookie from "js-cookie";
 const Header = () => {
   const t = useTranslations("Header");
 
@@ -44,7 +46,15 @@ const Header = () => {
                 <LangSwitch />
               </li>
               <li>
-                <FaUserAlt className="text-base hover:text-red transition-all cursor-pointer" />
+                <Link
+                  href={
+                    cookie.get("token")
+                      ? `/profile/${cookie.get("id")}`
+                      : "/register"
+                  }
+                >
+                  <FaUserAlt className="text-base hover:text-red transition-all cursor-pointer" />
+                </Link>
               </li>
               <li>
                 <FaShoppingCart className="text-base hover:text-red transition-all cursor-pointer" />

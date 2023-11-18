@@ -4,8 +4,6 @@ import Title from "../../UI/title";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { BiSolidShow } from "react-icons/bi";
 import { useFormik } from "formik";
 import { IFormValues } from "@/app/types/auth/IRegister";
 import { useTranslations } from "next-intl";
@@ -14,35 +12,41 @@ import { registerSchema } from "@/app/schema/register";
 import { inputs } from "@/app/constants/auth/register";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
+import { useRouter } from "next/navigation";
+import cookie from "js-cookie";
 const Register = () => {
   const t = useTranslations("Register");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-
+  const { push, refresh } = useRouter();
+  const [error, setError] = useState<string>();
   const handleButtonClick = (): void => {
     setShowErrors(true);
+    setError("");
   };
 
   const onSubmit = async (values: IFormValues, actions: any) => {
     try {
-      console.log(values);
-      const res = await axios.post(`http://localhost:5000/api/auth/register`, {
-        fullname: values.fullName,
-        email: values.email,
-        password: values.password,
-        confirmPassword: values.confirmPassword,
-      });
+      const res = await axios.post(
+        `http://localhost:5000/api/auth/register`,
+        values
+      );
       if (res.status === 200) {
+        cookie.set("token", res.data.data.accessToken, { expires: 1 });
+        cookie.set("id", res.data.data.id, { expires: 1 });
+        push("/home");
         notify();
+        refresh();
       }
+      console.log(res.data.message);
     } catch (err: any) {
       console.log(err);
+      setError(err.response.data.message ? err.response.data.message : "");
     }
     actions.resetForm();
   };
 
   const notify = () =>
-    toast.success(t("Successfully completed!"), {
+    toast.success(t("Successfully Register in"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -55,7 +59,7 @@ const Register = () => {
 
   const formik = useFormik<IFormValues>({
     initialValues: {
-      fullName: "",
+      fullname: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -91,6 +95,9 @@ const Register = () => {
               />
             ))}
 
+            {showErrors && (
+              <p className="text-red text-xs font-mont mt-[2px]">{error}</p>
+            )}
             <Button
               className="btn-red w-full mt-4 uppercase"
               type="submit"
