@@ -26,10 +26,11 @@ const Register = () => {
 
   const onSubmit = async (values: IFormValues, actions: any) => {
     try {
-      const res = await axios.post(
-        `http://localhost:5000/api/auth/register`,
-        values
-      );
+      const res = await axios.post(`http://localhost:5000/api/auth/register`, {
+        fullname: values.fullname,
+        email: values.email,
+        password: values.password,
+      });
       if (res.status === 200) {
         cookie.set("token", res.data.data.accessToken, { expires: 1 });
         cookie.set("id", res.data.data.id, { expires: 1 });
@@ -40,7 +41,7 @@ const Register = () => {
       console.log(res.data.message);
     } catch (err: any) {
       console.log(err);
-      setError(err.response.data.message ? err.response.data.message : "");
+      setError(err.response.data.message || "");
     }
     actions.resetForm();
   };

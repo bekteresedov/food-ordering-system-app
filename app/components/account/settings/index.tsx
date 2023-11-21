@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
-import { IFormValuesSettings } from "@/app/types/profile/IProfile";
+import { IFormValuesSettings, ISettings } from "@/app/types/profile/IProfile";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslations } from "next-intl";
@@ -10,20 +10,45 @@ import { InputListsettings } from "@/app/constants/profile/profile";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import cookie from "js-cookie";
 
-const Settings = () => {
+const Settings: React.FC<ISettings> = ({
+  address,
+  email,
+  fullname,
+  id,
+  job,
+  phoneNumber,
+  setState,
+}) => {
   const t = useTranslations("Account");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-
   const handleButtonClick = (): void => {
     setShowErrors(true);
-    // formik.handleSubmit();
   };
 
   const onSubmit = async (values: IFormValuesSettings, actions: any) => {
-    notify();
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
-    actions.resetForm();
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/api/users/update/${id}`,
+        { fullname: values.fullName, ...values },
+        {
+          headers: {
+            Authorization: cookie.get("token"),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        // response.data.data'yi kullanarak state'i güncelle
+        setState(response.data.data || null);
+
+        notify();
+      }
+    } catch (error) {
+      console.error("Error updating data:", error);
+    }
   };
 
   const notify = () =>
@@ -40,16 +65,16 @@ const Settings = () => {
 
   const formik = useFormik<IFormValuesSettings>({
     initialValues: {
-      fullName: "",
-      phoneNumber: "",
-      email: "",
-      job: "",
-      address: "",
-      bio: "",
+      fullName: fullname || "",
+      phoneNumber: phoneNumber || "",
+      email: email || "",
+      job: job || "",
+      address: address || "",
     },
     validationSchema: profileSchema,
     onSubmit,
   });
+
   return (
     <>
       <section>
@@ -83,6 +108,7 @@ const Settings = () => {
                   />
                 ))}
               </div>
+
               <Button
                 type="submit"
                 className="btn-red  w-fit mt-3"

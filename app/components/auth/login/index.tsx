@@ -28,10 +28,10 @@ const Login = () => {
 
   const onSubmit = async (values: IFormValues, actions: any) => {
     try {
-      const res = await axios.post(
-        `http://localhost:5000/api/auth/login`,
-        values
-      );
+      const res = await axios.post(`http://localhost:5000/api/auth/login`, {
+        fullname: values.fullname,
+        password: values.password,
+      });
       if (res.status === 200) {
         cookie.set("token", res.data.data.accessToken, { expires: 1 });
         cookie.set("id", res.data.data.id, { expires: 1 });
@@ -60,7 +60,7 @@ const Login = () => {
 
   const formik = useFormik<IFormValues>({
     initialValues: {
-      email: "",
+      fullname: "",
       password: "",
     },
     validationSchema: loginSchema,
@@ -77,15 +77,15 @@ const Login = () => {
 
             <Input
               className="p-3  "
-              type="email"
-              id="email"
-              placeholder={t("Your Email Address")}
-              value={formik.values.email}
+              type="text"
+              id="fullname"
+              placeholder={t("Your Full Name")}
+              value={formik.values.fullname}
               onChange={(e) => {
                 formik.handleChange(e);
                 setShowErrors(false);
               }}
-              errorMessage={formik.errors.email}
+              errorMessage={formik.errors.fullname}
               isShowError={showErrors && Object.keys(formik.errors).length > 0}
             />
             <div className="relative">

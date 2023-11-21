@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-green dark:bg-dbg  text-white pt-10 pb-5">
-        <div className="flex gap-10 w-8/12 mx-auto ">
-          <ul className="w-4/12">
+        <div className="flex flex-col items-center md:items-start md:flex-row  gap-10 md:w-8/12 mx-auto ">
+          <ul className="w-10/12 md:w-4/12">
             <li>
               <Title className="text-2xl">Contact Us</Title>
             </li>
           </ul>
-          <ul className="w-4/12">
+          <ul className="w-10/12 md:w-4/12">
             <li>
               <Title className="text-2xl">Baktar</Title>
             </li>
@@ -22,7 +22,7 @@ const Footer = () => {
               </p>
             </li>
           </ul>
-          <ul className="w-4/12">
+          <ul className="w-10/12 md:w-4/12">
             <Title className="text-2xl">Opening Hours</Title>
           </ul>
         </div>

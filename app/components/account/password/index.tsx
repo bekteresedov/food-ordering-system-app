@@ -4,34 +4,46 @@ import Title from "../../UI/title";
 import {
   IFormValuesPassword,
   IFormValuesSettings,
+  IPassword,
 } from "@/app/types/profile/IProfile";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslations } from "next-intl";
 import { profileSchema } from "@/app/schema/profileSettings";
-import {
-  InputListPassword,
-  InputListsettings,
-} from "@/app/constants/profile/profile";
+import { InputListPassword } from "@/app/constants/profile/profile";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
 import { newPasswordSchema } from "@/app/schema/profilePassword";
+import axios from "axios";
+import cookie from "js-cookie";
 
-const Password = () => {
+const Password: React.FC<IPassword> = ({ id }) => {
   const t = useTranslations("AccountPassword");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-
   const handleButtonClick = (): void => {
     setShowErrors(true);
-    // formik.handleSubmit();
   };
 
   const onSubmit = async (values: IFormValuesPassword, actions: any) => {
-    notify();
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
-    actions.resetForm();
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/api/users/update/${id}`,
+        { password: values.password },
+        {
+          headers: {
+            Authorization: cookie.get("token"),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        notify();
+        actions.resetForm();
+      }
+    } catch (error: any) {
+      console.log(error.message);
+    }
   };
 
   const notify = () =>
@@ -87,6 +99,7 @@ const Password = () => {
                   />
                 ))}
               </div>
+
               <Button
                 type="submit"
                 className="btn-red  w-fit mt-3"

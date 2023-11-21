@@ -1,5 +1,6 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { IconType } from "react-icons";
+import { IUser } from "../user/IUser";
 
 interface IBase {
     title: string;
@@ -28,7 +29,6 @@ export interface IFormValuesSettings {
     email: string;
     job: string
     address: string;
-    bio: string;
 }
 
 export interface IInputListPassword extends IBaseInput {
@@ -38,5 +38,21 @@ export interface IInputListPassword extends IBaseInput {
 export interface IFormValuesPassword {
     password: string
     confirmPassword: string;
+
+}
+
+export interface ISettings {
+    id?: string | string[];
+    fullname?: string;
+    email?: string;
+    phoneNumber?: string;
+    address?: string
+    job?: string;
+    bio?: string;
+    setState: (body: IUser) => void;
+}
+
+export interface IPassword {
+    id?: string | string[];
 
 }

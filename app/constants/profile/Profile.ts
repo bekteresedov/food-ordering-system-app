@@ -55,12 +55,7 @@ export const InputListsettings: IInputListSettings[] = [
         type: "text",
         placeholder: "Your Job",
     },
-    {
-        id: 6,
-        name: "bio",
-        type: "text",
-        placeholder: "Your Bio",
-    },
+
 ];
 
 export const InputListPassword: IInputListPassword[] = [

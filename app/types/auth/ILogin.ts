@@ -1,5 +1,5 @@
 export interface IFormValues {
-    email: string;
+    fullname: string;
     password: string;
 
 }

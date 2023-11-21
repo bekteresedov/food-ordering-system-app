@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
 export const loginSchema = Yup.object({
-    email: Yup.string().required("Email is required").email("Email is invalid"),
+    fullname: Yup.string().required("Username is required")
+        .min(3, "Username must be at least 3 characters"),
     password: Yup.string()
         .required("Password is required")
         .min(8, "Password must be at least 8 characters")

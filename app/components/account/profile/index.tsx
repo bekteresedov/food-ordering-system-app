@@ -1,25 +1,50 @@
 "use client";
 import { profileContentList } from "@/app/constants/profile/profile";
-import { IProfile } from "@/app/types/profile/IProfile";
+import { IProfile, ISettings } from "@/app/types/profile/IProfile";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Settings from "../settings";
 import Password from "../password";
 import Order from "../order";
 import { useTranslations } from "next-intl";
 import cookie from "js-cookie";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import axios from "axios";
+import { IUser } from "@/app/types/user/IUser";
 
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
+  const [user, setUser] = useState<IUser | null>();
   const t = useTranslations("Profile");
   const { push, refresh } = useRouter();
+  const { id } = useParams();
+
   const signOut = (): void => {
     cookie.remove("token");
     cookie.remove("id");
     push("/");
     refresh();
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/users/get/${id}`,
+          {
+            headers: {
+              Authorization: cookie.get("token"),
+            },
+          }
+        );
+        setUser(response.data.data);
+      } catch (error: any) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -34,7 +59,9 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
                 height={100}
                 className="rounded-full mt-3"
               />
-              <h2 className="font-mont font-bold text-base my-3">{title}</h2>
+              <h2 className="font-mont font-bold text-base my-3">
+                {user?.fullname || "User"}
+              </h2>
             </div>
 
             <ul className="">
@@ -58,10 +85,10 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
             </ul>
           </div>
           <div className="w-full">
-            {tabs == 0 ? (
-              <Settings />
+            {tabs == 0 && user ? (
+              <Settings {...user} id={id} setState={setUser} />
             ) : tabs == 1 ? (
-              <Password />
+              <Password id={id} />
             ) : tabs == 2 ? (
               <Order />
             ) : null}
