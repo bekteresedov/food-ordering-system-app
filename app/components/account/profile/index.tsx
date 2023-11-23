@@ -11,7 +11,7 @@ import cookie from "js-cookie";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { IUser } from "@/app/types/user/IUser";
-
+import profile from "./assets/images/Microsoft_Account.svg.png";
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
   const [user, setUser] = useState<IUser | null>();
@@ -49,21 +49,20 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
   return (
     <>
       <section>
-        <div className="min-h-[400px] w-11/12 mx-auto flex flex-col md:flex-row gap-2 md:gap-10">
+        <div className="h-[400px] w-11/12 mx-auto flex flex-col md:flex-row gap-2 md:gap-10">
           <div className="border dark:border-t-0  dark:border-[#EBE3D5] min-w-full md:min-w-[250px] hover:scale-[0.98] transition-all bg-white dark:bg-dbg mb-16 md:mb-40">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center ">
               <Image
-                src={src}
-                alt={title}
-                width={100}
+                src={user?.file || profile}
+                alt={user?.fullname || "unknown"}
+                width={130}
                 height={100}
-                className="rounded-full mt-3"
+                className="rounded-xl mt-3"
               />
               <h2 className="font-mont font-bold text-base my-3">
                 {user?.fullname || "User"}
               </h2>
             </div>
-
             <ul className="">
               {profileContentList.map((element, index) => (
                 <li
@@ -86,7 +85,7 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
           </div>
           <div className="w-full">
             {tabs == 0 && user ? (
-              <Settings {...user} id={id} setState={setUser} />
+              <Settings {...user} id={id} setState={setUser} state={user} />
             ) : tabs == 1 ? (
               <Password id={id} />
             ) : tabs == 2 ? (

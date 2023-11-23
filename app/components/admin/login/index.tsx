@@ -12,20 +12,41 @@ import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import { adminLoginSchema } from "@/app/schema/adminLogin";
 import "react-toastify/dist/ReactToastify.css";
-
+import axios from "axios";
+import cookie from "js-cookie";
+import { useRouter } from "next/navigation";
 const AdminLogin = () => {
   const t = useTranslations("AdminLogin");
   const [showErrors, setShowErrors] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { push, refresh } = useRouter();
+  const [error, setError] = useState<string>("");
 
   const handleButtonClick = (): void => {
     setShowErrors(true);
+    setError("");
   };
 
   const onSubmit = async (values: IFormValues, actions: any) => {
-    notify();
-    console.log(values);
-    actions.resetForm();
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/api/auth/admin/login`,
+        {
+          fullname: values.username,
+          password: values.password,
+        }
+      );
+      if (res.status === 200) {
+        cookie.set("token", res.data.data.accessToken, { expires: 1 });
+        cookie.set("id", res.data.data.id, { expires: 1 });
+        push("/admin/profile");
+        refresh();
+        notify();
+        actions.resetForm();
+      }
+    } catch (err: any) {
+      setError(err.response.data.message ? err.response.data.message : "");
+    }
   };
 
   const notify = () =>
@@ -91,7 +112,9 @@ const AdminLogin = () => {
                 onClick={() => setShowPassword(!showPassword)}
               />
             </div>
-
+            {showErrors && (
+              <p className="text-red text-xs font-mont mt-[2px]">{error}</p>
+            )}
             <Button
               className="btn-red w-full mt-4 uppercase"
               type="submit"

@@ -19,7 +19,7 @@ const Login = () => {
   const t = useTranslations("Login");
   const [showErrors, setShowErrors] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [error, setError] = useState<string>("s");
+  const [error, setError] = useState<string>("");
   const { push, refresh } = useRouter();
   const handleButtonClick = (): void => {
     setShowErrors(true);

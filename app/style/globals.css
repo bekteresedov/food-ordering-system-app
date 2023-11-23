@@ -10,7 +10,7 @@
 }
 
 .btn-green {
-  @apply text-white px-[20px] py-[8px] rounded-3xl bg-green cursor-pointer hover:opacity-70 transition-all text-xs;
+  @apply text-white px-[20px] py-[8px] rounded-3xl bg-[#1A5D1A] cursor-pointer hover:opacity-70 transition-all text-xs;
 }
 /*  */
 

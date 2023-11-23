@@ -50,6 +50,7 @@ export interface ISettings {
     job?: string;
     bio?: string;
     setState: (body: IUser) => void;
+    state?: IUser
 }
 
 export interface IPassword {

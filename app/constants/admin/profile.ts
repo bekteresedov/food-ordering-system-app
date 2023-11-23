@@ -50,7 +50,7 @@ export const adminInputs: IAdminInputList[] = [
     {
         id: 3,
         name: "phoneNumber",
-        type: "number",
+        type: "text",
         placeholder: "Your Phone Number",
     },
     {

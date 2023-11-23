@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
 import { IAdminFormValues } from "@/app/types/admin/IAdminProfile";
 import { useFormik } from "formik";
@@ -9,21 +9,36 @@ import { adminInputs } from "@/app/constants/admin/profile";
 import Input from "../../UI/input";
 import { useTranslations } from "next-intl";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import cookie from "js-cookie";
+import { IAdminFooter } from "@/app/types/admin/IAdminFooter";
 
 const AdminFooter = () => {
   const [showErrors, setShowErrors] = useState<boolean>(false);
   const t = useTranslations("AdminFooter");
-
   const handleButtonClick = (): void => {
     setShowErrors(true);
-    // formik.handleSubmit();
   };
 
   const onSubmit = async (values: IAdminFormValues, actions: any) => {
-    notify();
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
-    actions.resetForm();
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/api/footers/update/${1}`,
+        { openingDay: values.day, openingHour: values.time, ...values },
+        {
+          headers: {
+            Authorization: cookie.get("token"),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        formik.setValues({ ...response.data.data });
+        notify();
+      }
+    } catch (error) {
+      console.error("Error updating data:", error);
+    }
   };
 
   const notify = () =>
@@ -50,6 +65,34 @@ const AdminFooter = () => {
     validationSchema: footerSchema,
     onSubmit,
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/footers/get/${1}`,
+          {
+            headers: {
+              Authorization: cookie.get("token"),
+            },
+          }
+        );
+        formik.setValues({
+          location: response.data.data.location,
+          email: response.data.data.email,
+          phoneNumber: response.data.data.phoneNumber,
+          description: response.data.data.description,
+          day: response.data.data.openingDay,
+          time: response.data.data.openingHour,
+        });
+      } catch (error: any) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [formik.setValues]);
+
   return (
     <>
       <section>

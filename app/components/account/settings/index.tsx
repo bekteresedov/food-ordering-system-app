@@ -21,6 +21,7 @@ const Settings: React.FC<ISettings> = ({
   job,
   phoneNumber,
   setState,
+  state,
 }) => {
   const t = useTranslations("Account");
   const [showErrors, setShowErrors] = useState<boolean>(false);
@@ -41,7 +42,6 @@ const Settings: React.FC<ISettings> = ({
       );
 
       if (response.status === 200) {
-        // response.data.data'yi kullanarak state'i güncelle
         setState(response.data.data || null);
 
         notify();
@@ -84,7 +84,7 @@ const Settings: React.FC<ISettings> = ({
           </Title>
           <div>
             <form onSubmit={formik.handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 ">
                 {InputListsettings?.map((input, index) => (
                   <Input
                     className="p-3 w-full "

@@ -8,11 +8,19 @@ import AdminOrder from "../order";
 import AdminCategory from "../category";
 import AdminFooter from "../footer";
 import { useTranslations } from "next-intl";
-
+import cookie from "js-cookie";
+import { useRouter } from "next/navigation";
 const AdminProfile: React.FC = () => {
   const [tabs, setTabs] = useState<number>(0);
   const t = useTranslations("AdminAccount");
+  const { push, refresh } = useRouter();
 
+  const signOut = (): void => {
+    cookie.remove("token");
+    cookie.remove("id");
+    push("/");
+    refresh();
+  };
   return (
     <>
       <section>
@@ -33,7 +41,10 @@ const AdminProfile: React.FC = () => {
               {adminProfileContentList.map((element, index) => (
                 <li
                   key={element.title}
-                  onClick={() => setTabs(index)}
+                  onClick={() => {
+                    setTabs(index);
+                    element.title == "Exit" && signOut();
+                  }}
                   className={`${
                     tabs == index && "bg-red text-white"
                   } flex items-center gap-1 border-y border-b-0  dark:border-[#EBE3D5] justify-center text-base py-2 font-mont hover:bg-red transition-all hover:text-white`}
