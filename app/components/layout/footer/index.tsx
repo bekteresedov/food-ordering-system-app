@@ -13,7 +13,7 @@ const Footer = () => {
     const fetchData = async () => {
       const { data, statusCode } = await get("/footers/get/1");
       if (statusCode === 200) {
-        setFooter(data);
+        setFooter(data as IFooterResponse);
       }
     };
 

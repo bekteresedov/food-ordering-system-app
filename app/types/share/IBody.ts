@@ -9,3 +9,7 @@ export interface IAuthBody {
 export interface IPatchBody {
     body: IFooterAdminBody
 }
+
+export interface IPostBody {
+    body: { categoryName: String }
+}

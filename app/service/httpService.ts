@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IResponse } from "../types/share/IResponse";
 import cookie from 'js-cookie';
-import { IAuthBody, IPatchBody } from "../types/share/IBody";
+import { IAuthBody, IPatchBody, IPostBody } from "../types/share/IBody";
 
 const base: string = "http://localhost:5000/api";
 
@@ -19,7 +19,7 @@ export async function postAuth(data: IAuthBody, path: string): Promise<IResponse
 };
 
 
-export async function patchHeader(path: string, data: any): Promise<IResponse> {
+export async function patchHeader(path: string, data: IPatchBody): Promise<IResponse> {
     try {
         const response = await axios.patch(
             `${base}${path}`,
@@ -30,7 +30,6 @@ export async function patchHeader(path: string, data: any): Promise<IResponse> {
                 },
             }
         );
-        console.log(response);
 
         return { statusCode: response.status, data: response.data.data }
     } catch (error: any) {
@@ -39,6 +38,39 @@ export async function patchHeader(path: string, data: any): Promise<IResponse> {
     }
 }
 
+export async function postHeader(data: IPostBody, path: string): Promise<IResponse> {
+    try {
+        const response = await axios.post(`${base + path}`, data.body, {
+            headers: {
+                Authorization: cookie.get("token"),
+            },
+        });
+
+        return { statusCode: response.status, data: response.data.data }
+
+    } catch (err: any) {
+        console.log(err);
+
+        return { error: err.response.data.message || "" };
+    }
+};
+
+export async function deleteHeader(path: string): Promise<IResponse> {
+    try {
+        const response = await axios.delete(`${base + path}`, {
+            headers: {
+                Authorization: cookie.get("token"),
+            },
+        });
+
+        return { statusCode: response.status }
+
+    } catch (err: any) {
+        console.log(err);
+
+        return { error: err.response.data.message || "" };
+    }
+};
 export async function get(path: string): Promise<IResponse> {
     try {
         const response = await axios.get(`${base + path}`);
