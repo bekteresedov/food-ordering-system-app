@@ -4,3 +4,4 @@ export interface IFooter {
     iconType: IconType;
     url: string;
 }
+

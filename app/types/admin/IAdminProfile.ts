@@ -12,12 +12,3 @@ export default interface IAdminInputList {
     placeholder: string;
 }
 
-export interface IAdminFormValues {
-    location: string;
-    email: string;
-    phoneNumber: string;
-    description: string;
-    day: string;
-    time: string;
-
-}

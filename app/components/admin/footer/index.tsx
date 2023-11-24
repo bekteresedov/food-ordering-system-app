@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
-import { IAdminFormValues } from "@/app/types/admin/IAdminProfile";
 import { useFormik } from "formik";
 import { footerSchema } from "@/app/schema/adminProfile";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,9 +8,9 @@ import { adminInputs } from "@/app/constants/admin/profile";
 import Input from "../../UI/input";
 import { useTranslations } from "next-intl";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import cookie from "js-cookie";
-import { IAdminFooter } from "@/app/types/admin/IAdminFooter";
+import { IAdminFooterForm } from "@/app/types/admin/IAdminFooter";
+import { get, patchHeader } from "@/app/service/httpService";
+import { IResponse } from "../../../types/share/IResponse";
 
 const AdminFooter = () => {
   const [showErrors, setShowErrors] = useState<boolean>(false);
@@ -20,27 +19,29 @@ const AdminFooter = () => {
     setShowErrors(true);
   };
 
-  const onSubmit = async (values: IAdminFormValues, actions: any) => {
-    try {
-      const response = await axios.patch(
-        `http://localhost:5000/api/footers/update/${1}`,
-        { openingDay: values.day, openingHour: values.time, ...values },
-        {
-          headers: {
-            Authorization: cookie.get("token"),
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        formik.setValues({ ...response.data.data });
-        notify();
-      }
-    } catch (error) {
-      console.error("Error updating data:", error);
+  const onSubmit = async (values: IAdminFooterForm) => {
+    const response: IResponse = await patchHeader("/footers/update/1", {
+      body: {
+        openingDay: values.day,
+        openingHour: values.time,
+        description: values.description,
+        email: values.email,
+        location: values.location,
+        phoneNumber: values.phoneNumber,
+      },
+    });
+    if (response.statusCode == 200) {
+      formik.setValues({
+        day: response.data?.openingDay || "",
+        time: response.data?.openingHour || "",
+        description: response.data?.description || "",
+        email: response.data?.email || "",
+        location: response.data?.location || "",
+        phoneNumber: response.data?.phoneNumber || "",
+      });
+      notify();
     }
   };
-
   const notify = () =>
     toast.success(t("Successfully"), {
       position: "top-right",
@@ -53,7 +54,7 @@ const AdminFooter = () => {
       theme: "colored",
     });
 
-  const formik = useFormik<IAdminFormValues>({
+  const formik = useFormik<IAdminFooterForm>({
     initialValues: {
       location: "",
       email: "",
@@ -68,25 +69,16 @@ const AdminFooter = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/api/footers/get/${1}`,
-          {
-            headers: {
-              Authorization: cookie.get("token"),
-            },
-          }
-        );
+      const { data, statusCode } = await get("/footers/get/1");
+      if (statusCode === 200) {
         formik.setValues({
-          location: response.data.data.location,
-          email: response.data.data.email,
-          phoneNumber: response.data.data.phoneNumber,
-          description: response.data.data.description,
-          day: response.data.data.openingDay,
-          time: response.data.data.openingHour,
+          location: data?.location || "",
+          email: data?.email || "",
+          phoneNumber: data?.phoneNumber || "",
+          description: data?.description || "",
+          day: data?.openingDay || "",
+          time: data?.openingHour || "",
         });
-      } catch (error: any) {
-        console.error("Error fetching data:", error);
       }
     };
 
@@ -107,7 +99,7 @@ const AdminFooter = () => {
               {adminInputs?.map((input, index) => (
                 <Input
                   className="p-3 w-full "
-                  value={formik.values[input.name as keyof IAdminFormValues]}
+                  value={formik.values[input.name as keyof IAdminFooterForm]}
                   onChange={(e) => {
                     formik.handleChange(e);
                     setShowErrors(false);
@@ -117,7 +109,7 @@ const AdminFooter = () => {
                   placeholder={t(input.placeholder)}
                   type={input.type}
                   errorMessage={
-                    formik.errors[input.name as keyof IAdminFormValues]
+                    formik.errors[input.name as keyof IAdminFooterForm]
                   }
                   isShowError={
                     showErrors && Object.keys(formik.errors).length > 0

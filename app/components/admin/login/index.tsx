@@ -26,13 +26,13 @@ const AdminLogin = () => {
     setError("");
   };
 
-  const onSubmit = async (values: IFormAdmin, actions: any) => {
+  const onSubmit = async (values: IFormAdmin) => {
     const response: IResponse = await postAuth(
       { body: { fullname: values.username, ...values } },
       "/admin/login"
     );
     if (response.statusCode == 200) {
-      push("/home");
+      push("/admin/profile");
       notify();
       refresh();
     } else {
