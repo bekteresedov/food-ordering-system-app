@@ -1,4 +1,4 @@
-export interface IFormValues {
+export interface IFormAdmin {
     username: string;
     password: string;
 

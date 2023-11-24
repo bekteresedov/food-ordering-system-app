@@ -154,7 +154,8 @@
     "Login": "Login",
     "Home Page": "Home Page",
     "Your Username": "Your Username",
-    "Your Password": "Your Password"
+    "Your Password": "Your Password",
+    "successfully": "Your Account has been Successfully Renewed"
   },
   "Errors": {
     "Full name is required": "Full name is required.",

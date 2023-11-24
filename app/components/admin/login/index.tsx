@@ -4,17 +4,16 @@ import Title from "../../UI/title";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
 import { BiSolidShow } from "react-icons/bi";
 import { useFormik } from "formik";
-import { IFormValues } from "@/app/types/admin/IAdminLogin";
+import { IFormAdmin } from "@/app/types/admin/IAdminLogin";
 import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import { adminLoginSchema } from "@/app/schema/adminLogin";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import { postAuth } from "@/app/service/httpService";
+import { IResponse } from "@/app/types/share/IResponse";
 const AdminLogin = () => {
   const t = useTranslations("AdminLogin");
   const [showErrors, setShowErrors] = useState<boolean>(false);
@@ -27,30 +26,22 @@ const AdminLogin = () => {
     setError("");
   };
 
-  const onSubmit = async (values: IFormValues, actions: any) => {
-    try {
-      const res = await axios.post(
-        `http://localhost:5000/api/auth/admin/login`,
-        {
-          fullname: values.username,
-          password: values.password,
-        }
-      );
-      if (res.status === 200) {
-        cookie.set("token", res.data.data.accessToken, { expires: 1 });
-        cookie.set("id", res.data.data.id, { expires: 1 });
-        push("/admin/profile");
-        refresh();
-        notify();
-        actions.resetForm();
-      }
-    } catch (err: any) {
-      setError(err.response.data.message ? err.response.data.message : "");
+  const onSubmit = async (values: IFormAdmin, actions: any) => {
+    const response: IResponse = await postAuth(
+      { body: { fullname: values.username, ...values } },
+      "/admin/login"
+    );
+    if (response.statusCode == 200) {
+      push("/home");
+      notify();
+      refresh();
+    } else {
+      setError(response.error);
     }
   };
 
   const notify = () =>
-    toast.success(t("Successfully completed!"), {
+    toast.success(t("successfully"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -61,7 +52,7 @@ const AdminLogin = () => {
       theme: "colored",
     });
 
-  const formik = useFormik<IFormValues>({
+  const formik = useFormik<IFormAdmin>({
     initialValues: {
       username: "",
       password: "",

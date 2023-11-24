@@ -7,13 +7,13 @@ import Link from "next/link";
 import { BiSolidShow } from "react-icons/bi";
 import { useFormik } from "formik";
 import { loginSchema } from "@/app/schema/login";
-import { IFormValues } from "@/app/types/auth/ILogin";
 import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import { postAuth } from "@/app/service/httpService";
+import { IResponse } from "@/app/types/share/IResponse";
+import { IFormLogin } from "@/app/types/auth/ILogin";
 
 const Login = () => {
   const t = useTranslations("Login");
@@ -26,28 +26,19 @@ const Login = () => {
     setError("");
   };
 
-  const onSubmit = async (values: IFormValues, actions: any) => {
-    try {
-      const res = await axios.post(`http://localhost:5000/api/auth/login`, {
-        fullname: values.fullname,
-        password: values.password,
-      });
-      if (res.status === 200) {
-        cookie.set("token", res.data.data.accessToken, { expires: 1 });
-        cookie.set("id", res.data.data.id, { expires: 1 });
-        push("/home");
-        refresh();
-        notify();
-        actions.resetForm();
-      }
-    } catch (err: any) {
-      console.log(err);
-      setError(err.response.data.message ? err.response.data.message : "");
+  const onSubmit = async (values: IFormLogin) => {
+    const response: IResponse = await postAuth({ body: values }, "/login");
+    if (response.statusCode == 200) {
+      push("/home");
+      notify();
+      refresh();
+    } else {
+      setError(response.error);
     }
   };
 
   const notify = () =>
-    toast.success(t("Successfully completed!"), {
+    toast.success(t("Successfully"), {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -58,7 +49,7 @@ const Login = () => {
       theme: "colored",
     });
 
-  const formik = useFormik<IFormValues>({
+  const formik = useFormik<IFormLogin>({
     initialValues: {
       fullname: "",
       password: "",

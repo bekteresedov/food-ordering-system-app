@@ -5,15 +5,15 @@ import Input from "../../UI/input";
 import Button from "../../UI/button";
 import Link from "next/link";
 import { useFormik } from "formik";
-import { IFormValues } from "@/app/types/auth/IRegister";
 import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import { registerSchema } from "@/app/schema/register";
 import { inputs } from "@/app/constants/auth/register";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import cookie from "js-cookie";
+import { IFormRegister } from "@/app/types/auth/IRegister";
+import { postAuth } from "@/app/service/httpService";
+import { IResponse } from "@/app/types/share/IResponse";
 const Register = () => {
   const t = useTranslations("Register");
   const [showErrors, setShowErrors] = useState<boolean>(false);
@@ -24,26 +24,15 @@ const Register = () => {
     setError("");
   };
 
-  const onSubmit = async (values: IFormValues, actions: any) => {
-    try {
-      const res = await axios.post(`http://localhost:5000/api/auth/register`, {
-        fullname: values.fullname,
-        email: values.email,
-        password: values.password,
-      });
-      if (res.status === 200) {
-        cookie.set("token", res.data.data.accessToken, { expires: 1 });
-        cookie.set("id", res.data.data.id, { expires: 1 });
-        push("/home");
-        notify();
-        refresh();
-      }
-      console.log(res.data.message);
-    } catch (err: any) {
-      console.log(err);
-      setError(err.response.data.message || "");
+  const onSubmit = async (values: IFormRegister) => {
+    const response: IResponse = await postAuth({ body: values }, "/register");
+    if (response.statusCode == 200) {
+      push("/home");
+      notify();
+      refresh();
+    } else {
+      setError(response.error);
     }
-    actions.resetForm();
   };
 
   const notify = () =>
@@ -58,7 +47,7 @@ const Register = () => {
       theme: "colored",
     });
 
-  const formik = useFormik<IFormValues>({
+  const formik = useFormik<IFormRegister>({
     initialValues: {
       fullname: "",
       email: "",
@@ -80,7 +69,7 @@ const Register = () => {
             {inputs?.map((input, index) => (
               <Input
                 className="p-3 mt-2"
-                value={formik.values[input.name as keyof IFormValues]}
+                value={formik.values[input.name as keyof IFormRegister]}
                 onChange={(e) => {
                   formik.handleChange(e);
                   setShowErrors(false);
@@ -89,7 +78,7 @@ const Register = () => {
                 key={index}
                 placeholder={t(input.placeholder)}
                 type={input.type}
-                errorMessage={formik.errors[input.name as keyof IFormValues]}
+                errorMessage={formik.errors[input.name as keyof IFormRegister]}
                 isShowError={
                   showErrors && Object.keys(formik.errors).length > 0
                 }

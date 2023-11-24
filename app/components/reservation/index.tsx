@@ -16,13 +16,10 @@ const Reservation = () => {
 
   const handleButtonClick = (): void => {
     setShowErrors(true);
-    // formik.handleSubmit();
   };
 
   const onSubmit = async (values: FormValues, actions: any) => {
     notify();
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
     actions.resetForm();
   };
 

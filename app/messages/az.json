@@ -154,7 +154,8 @@
     "Login": "Giriş",
     "Home Page": "Əsas səhifə",
     "Your Username": "İstifadəçi adın",
-    "Your Password": "Parolunuz"
+    "Your Password": "Parolunuz",
+    "successfully": "Uğurla giriş olundu!"
   },
   "Errors": {
     "Full name is required": "Ad və soyad boş buraxılamaz.",
