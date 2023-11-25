@@ -12,6 +12,7 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { IUser } from "@/app/types/user/IUser";
 import profile from "./assets/images/Microsoft_Account.svg.png";
+import { getHeader } from "@/app/service/httpService";
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
   const [user, setUser] = useState<IUser | null>();
@@ -28,18 +29,9 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/api/users/get/${id}`,
-          {
-            headers: {
-              Authorization: cookie.get("token"),
-            },
-          }
-        );
-        setUser(response.data.data);
-      } catch (error: any) {
-        console.error("Error fetching data:", error);
+      const { data, statusCode } = await getHeader(`/users/get/${id}`);
+      if (statusCode === 200) {
+        setUser(data);
       }
     };
 

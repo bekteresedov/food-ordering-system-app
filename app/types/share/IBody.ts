@@ -7,7 +7,7 @@ export interface IAuthBody {
 }
 
 export interface IPatchBody {
-    body: IFooterAdminBody
+    body: IFooterAdminBody | { password: string }
 }
 
 export interface IPostBody {

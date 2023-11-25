@@ -71,6 +71,20 @@ export async function deleteHeader(path: string): Promise<IResponse> {
         return { error: err.response.data.message || "" };
     }
 };
+
+export async function getHeader(path: string): Promise<IResponse> {
+    try {
+        const response = await axios.get(`${base + path}`, {
+            headers: {
+                Authorization: cookie.get("token"),
+            },
+        });
+        return { statusCode: response.status, data: response.data.data }
+    } catch (error: any) {
+        return { error: error.response.data.message || "" };
+    }
+}
+
 export async function get(path: string): Promise<IResponse> {
     try {
         const response = await axios.get(`${base + path}`);

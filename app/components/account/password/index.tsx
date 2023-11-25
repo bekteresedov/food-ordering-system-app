@@ -1,22 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import Title from "../../UI/title";
-import {
-  IFormValuesPassword,
-  IFormValuesSettings,
-  IPassword,
-} from "@/app/types/profile/IProfile";
+import { IFormValuesPassword, IPassword } from "@/app/types/profile/IProfile";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslations } from "next-intl";
-import { profileSchema } from "@/app/schema/profileSettings";
 import { InputListPassword } from "@/app/constants/profile/profile";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
 import { newPasswordSchema } from "@/app/schema/profilePassword";
-import axios from "axios";
-import cookie from "js-cookie";
+import { patchHeader } from "@/app/service/httpService";
 
 const Password: React.FC<IPassword> = ({ id }) => {
   const t = useTranslations("AccountPassword");
@@ -26,23 +20,13 @@ const Password: React.FC<IPassword> = ({ id }) => {
   };
 
   const onSubmit = async (values: IFormValuesPassword, actions: any) => {
-    try {
-      const response = await axios.patch(
-        `http://localhost:5000/api/users/update/${id}`,
-        { password: values.password },
-        {
-          headers: {
-            Authorization: cookie.get("token"),
-          },
-        }
-      );
+    const { statusCode } = await patchHeader(`/users/update/${id}`, {
+      body: { password: values.password },
+    });
 
-      if (response.status === 200) {
-        notify();
-        actions.resetForm();
-      }
-    } catch (error: any) {
-      console.log(error.message);
+    if (statusCode === 200) {
+      notify();
+      actions.resetForm();
     }
   };
 
