@@ -1,14 +1,22 @@
-export function convertToBase64(file: any): Promise<string> {
+import { toast } from "react-toastify";
+
+export const convertToBase64 = (file: File): Promise<string> => {
     return new Promise<string>((resolve, reject) => {
+        if (!(file instanceof Blob)) {
+            reject(new Error("File must be not a Blob"));
+            return;
+        }
+
         const fileReader = new FileReader();
         fileReader.readAsDataURL(file);
+
         fileReader.onload = () => {
-            // Use type assertion to tell TypeScript that result is a string
             resolve(fileReader.result as string);
         };
+
         fileReader.onerror = (error) => {
             reject(error);
+            toast.error("Dosya okuma hatası");
         };
     });
-}
-
+};

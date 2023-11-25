@@ -49,8 +49,8 @@ export interface ISettings {
     address?: string
     job?: string;
     bio?: string;
+    state: IUser;
     setState: (body: IUser) => void;
-    state?: IUser
 }
 
 export interface IPassword {

@@ -12,6 +12,7 @@ import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import cookie from "js-cookie";
+import { convertToBase64 } from "@/app/utils/file";
 
 const Settings: React.FC<ISettings> = ({
   address,
@@ -25,10 +26,18 @@ const Settings: React.FC<ISettings> = ({
 }) => {
   const t = useTranslations("Account");
   const [showErrors, setShowErrors] = useState<boolean>(false);
+  const [file, setFile] = useState<{ src: string }>();
   const handleButtonClick = (): void => {
     setShowErrors(true);
   };
 
+  const handleFileUpload = async (e: any): Promise<void> => {
+    const f = e.target.files[0];
+    const base64 = await convertToBase64(f);
+    console.log(base64);
+    setFile({ ...file, src: base64 });
+    setState({ ...state, file: base64 || "" });
+  };
   const onSubmit = async (values: IFormValuesSettings, actions: any) => {
     try {
       const response = await axios.patch(
@@ -107,6 +116,27 @@ const Settings: React.FC<ISettings> = ({
                     }
                   />
                 ))}
+                <div className="flex items-center mt-1 gap-2">
+                  <input
+                    id="file"
+                    type="file"
+                    className="w-0"
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                  <label htmlFor="file" className="btn-green">
+                    sekil sec
+                  </label>
+                  <Button
+                    className="btn-red"
+                    type="button"
+                    onClick={() => {
+                      setFile({ ...file, src: "" });
+                      setState({ ...state, file: "" });
+                    }}
+                  >
+                    Sil
+                  </Button>
+                </div>
               </div>
 
               <Button

@@ -1,6 +1,6 @@
 "use client";
 import { profileContentList } from "@/app/constants/profile/profile";
-import { IProfile, ISettings } from "@/app/types/profile/IProfile";
+import { IProfile } from "@/app/types/profile/IProfile";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Settings from "../settings";
@@ -9,10 +9,9 @@ import Order from "../order";
 import { useTranslations } from "next-intl";
 import cookie from "js-cookie";
 import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
 import { IUser } from "@/app/types/user/IUser";
-import profile from "./assets/images/Microsoft_Account.svg.png";
 import { getHeader } from "@/app/service/httpService";
+import profile from "./assets/images/Microsoft_Account.svg.png";
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
   const [user, setUser] = useState<IUser | null>();
