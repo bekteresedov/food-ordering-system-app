@@ -23,8 +23,16 @@ export interface IProfileContent extends IBase {
 
 export default interface IInputListSettings extends IBaseInput {
 }
-export interface IFormValuesSettings {
+export interface IFormSettings {
     fullName: string;
+    phoneNumber: string;
+    email: string;
+    job: string
+    address: string;
+}
+
+export interface IFormSettingBody {
+    fullname: string;
     phoneNumber: string;
     email: string;
     job: string
@@ -49,7 +57,6 @@ export interface ISettings {
     address?: string
     job?: string;
     bio?: string;
-    state: IUser;
     setState: (body: IUser) => void;
 }
 

@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Title from "../../UI/title";
-import { IFormValuesSettings, ISettings } from "@/app/types/profile/IProfile";
+import { IFormSettings, ISettings } from "@/app/types/profile/IProfile";
 import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslations } from "next-intl";
@@ -12,7 +12,7 @@ import Button from "../../UI/button";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import cookie from "js-cookie";
-import { convertToBase64 } from "@/app/utils/file";
+import { patchHeader } from "@/app/service/httpService";
 
 const Settings: React.FC<ISettings> = ({
   address,
@@ -22,41 +22,21 @@ const Settings: React.FC<ISettings> = ({
   job,
   phoneNumber,
   setState,
-  state,
 }) => {
   const t = useTranslations("Account");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-  const [file, setFile] = useState<{ src: string }>();
   const handleButtonClick = (): void => {
     setShowErrors(true);
   };
 
-  const handleFileUpload = async (e: any): Promise<void> => {
-    const f = e.target.files[0];
-    const base64 = await convertToBase64(f);
-    console.log(base64);
-    setFile({ ...file, src: base64 });
-    setState({ ...state, file: base64 || "" });
-  };
-  const onSubmit = async (values: IFormValuesSettings, actions: any) => {
-    try {
-      const response = await axios.patch(
-        `http://localhost:5000/api/users/update/${id}`,
-        { fullname: values.fullName, ...values },
-        {
-          headers: {
-            Authorization: cookie.get("token"),
-          },
-        }
-      );
+  const onSubmit = async (values: IFormSettings) => {
+    const { data, statusCode } = await patchHeader(`/users/update/${id}`, {
+      body: { fullname: values.fullName, ...values },
+    });
 
-      if (response.status === 200) {
-        setState(response.data.data || null);
-
-        notify();
-      }
-    } catch (error) {
-      console.error("Error updating data:", error);
+    if (statusCode === 200) {
+      setState(data || null);
+      notify();
     }
   };
 
@@ -72,7 +52,7 @@ const Settings: React.FC<ISettings> = ({
       theme: "colored",
     });
 
-  const formik = useFormik<IFormValuesSettings>({
+  const formik = useFormik<IFormSettings>({
     initialValues: {
       fullName: fullname || "",
       phoneNumber: phoneNumber || "",
@@ -97,9 +77,7 @@ const Settings: React.FC<ISettings> = ({
                 {InputListsettings?.map((input, index) => (
                   <Input
                     className="p-3 w-full "
-                    value={
-                      formik.values[input.name as keyof IFormValuesSettings]
-                    }
+                    value={formik.values[input.name as keyof IFormSettings]}
                     onChange={(e) => {
                       formik.handleChange(e);
                       setShowErrors(false);
@@ -109,34 +87,13 @@ const Settings: React.FC<ISettings> = ({
                     placeholder={t(input.placeholder)}
                     type={input.type}
                     errorMessage={
-                      formik.errors[input.name as keyof IFormValuesSettings]
+                      formik.errors[input.name as keyof IFormSettings]
                     }
                     isShowError={
                       showErrors && Object.keys(formik.errors).length > 0
                     }
                   />
                 ))}
-                <div className="flex items-center mt-1 gap-2">
-                  <input
-                    id="file"
-                    type="file"
-                    className="w-0"
-                    onChange={(e) => handleFileUpload(e)}
-                  />
-                  <label htmlFor="file" className="btn-green">
-                    sekil sec
-                  </label>
-                  <Button
-                    className="btn-red"
-                    type="button"
-                    onClick={() => {
-                      setFile({ ...file, src: "" });
-                      setState({ ...state, file: "" });
-                    }}
-                  >
-                    Sil
-                  </Button>
-                </div>
               </div>
 
               <Button

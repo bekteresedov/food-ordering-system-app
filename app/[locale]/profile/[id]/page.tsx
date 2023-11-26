@@ -4,7 +4,7 @@ import img from "@/app/components/customer/customerList/assets/images/client1.jp
 const Page = () => {
   return (
     <>
-      <main className="h-[70vh]">
+      <main className="">
         <div>
           <Profile src={img} title="Baktar Asad" />
         </div>

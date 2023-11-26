@@ -10,11 +10,15 @@ import { useTranslations } from "next-intl";
 import cookie from "js-cookie";
 import { useParams, useRouter } from "next/navigation";
 import { IUser } from "@/app/types/user/IUser";
-import { getHeader } from "@/app/service/httpService";
-import profile from "./assets/images/Microsoft_Account.svg.png";
+import { getHeader, patchHeader } from "@/app/service/httpService";
+import { avatarList } from "@/app/constants/avatar/avatarList";
+import { TfiClose } from "react-icons/tfi";
+
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
   const [user, setUser] = useState<IUser | null>();
+  const [isAvatar, setIsAvatar] = useState<boolean>(false);
+  const [avatar, setAvatar] = useState<number>(0);
   const t = useTranslations("Profile");
   const { push, refresh } = useRouter();
   const { id } = useParams();
@@ -26,11 +30,21 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
     refresh();
   };
 
+  const handleProfile = async (value: string) => {
+    const { statusCode } = await patchHeader(`/users/update/${id}`, {
+      body: { file: value },
+    });
+
+    if (statusCode === 200) {
+      setAvatar(avatarList.findIndex((avatar) => avatar.file == value));
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       const { data, statusCode } = await getHeader(`/users/get/${id}`);
       if (statusCode === 200) {
         setUser(data);
+        setAvatar(avatarList.findIndex((avatar) => avatar.file == data.file));
       }
     };
 
@@ -40,16 +54,18 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
   return (
     <>
       <section>
-        <div className="h-[400px] w-11/12 mx-auto flex flex-col md:flex-row gap-2 md:gap-10">
-          <div className="border dark:border-t-0  dark:border-[#EBE3D5] min-w-full md:min-w-[250px] hover:scale-[0.98] transition-all bg-white dark:bg-dbg mb-16 md:mb-40">
-            <div className="flex flex-col items-center ">
+        <div className=" w-11/12 mx-auto flex flex-col md:flex-row gap-2 md:gap-10">
+          <div className=" dark:border-[#EBE3D5] min-w-full md:min-w-[250px] hover:scale-[0.98] transition-all  mb-16 md:mb-36">
+            <div className="flex flex-col items-center my-5 md:my-2">
               <Image
-                src={user?.file || profile}
+                src={avatarList[avatar].src || ""}
                 alt={user?.fullname || "unknown"}
                 width={130}
                 height={100}
-                className="rounded-xl mt-3"
+                className="rounded-xl mt-3 border-red border rounded-[100%] border-[3px]"
+                onClick={() => setIsAvatar(true)}
               />
+
               <h2 className="font-mont font-bold text-base my-3">
                 {user?.fullname || "User"}
               </h2>
@@ -64,7 +80,7 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
                   }}
                   className={`${
                     tabs == index && "bg-red text-white"
-                  } flex items-center gap-1 border-y border-b-0  dark:border-[#EBE3D5] justify-center text-base py-2 font-mont hover:bg-red transition-all hover:text-white`}
+                  } flex items-center gap-1 borde  dark:border-[#EBE3D5] justify-center text-base py-2 font-mont hover:bg-red transition-all hover:text-white`}
                 >
                   {<element.iconType />}
                   <span className="text-[13px] font-semibold">
@@ -76,7 +92,7 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
           </div>
           <div className="w-full">
             {tabs == 0 && user ? (
-              <Settings {...user} id={id} setState={setUser} state={user} />
+              <Settings {...user} id={id} setState={setUser} />
             ) : tabs == 1 ? (
               <Password id={id} />
             ) : tabs == 2 ? (
@@ -84,6 +100,35 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
             ) : null}
           </div>
         </div>
+        {isAvatar && (
+          <div className="fixed top-0 w-screen bg-green opacity-[0.98] h-screen flex items-center justify-center">
+            <div className=" w-[400px] p-2 pb-4 rounded bg-[#C5FFF8] relative   h-fit border border-[3px]">
+              <h2 className="font-mont dark:text-black text-2xl font-bold text-center py-5">
+                Avatar List
+              </h2>
+              <div className="flex gap-3 justify-center mt-3 flex-wrap">
+                {avatarList?.map((avatar, index) => (
+                  <Image
+                    key={avatar.file}
+                    src={avatar.src}
+                    onClick={() => {
+                      setAvatar(index);
+                      setIsAvatar(false);
+                      handleProfile(avatar.file);
+                    }}
+                    alt={user?.fullname || "profile"}
+                    width={100}
+                    className="rounded-full border-red  hover:border hover:border-[3px] hover:scale-[0.98] transition-all"
+                  />
+                ))}
+              </div>
+              <TfiClose
+                onClick={() => setIsAvatar(false)}
+                className="text-3xl text-red absolute top-1 right-1 cursor-pointer"
+              />
+            </div>
+          </div>
+        )}
       </section>
     </>
   );
