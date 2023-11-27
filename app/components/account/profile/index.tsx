@@ -62,7 +62,7 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
                 alt={user?.fullname || "unknown"}
                 width={130}
                 height={100}
-                className="rounded-xl mt-3 border-red border rounded-[100%] border-[3px]"
+                className=" mt-3 border-red border rounded-[100%] border-[3px]"
                 onClick={() => setIsAvatar(true)}
               />
 
@@ -102,24 +102,27 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
         </div>
         {isAvatar && (
           <div className="fixed top-0 w-screen bg-green opacity-[0.98] h-screen flex items-center justify-center">
-            <div className=" w-[400px] p-2 pb-4 rounded bg-[#C5FFF8] relative   h-fit border border-[3px]">
+            <div className="w-[300px] md:w-[400px] p-2 pb-4 rounded bg-[#C5FFF8] relative   h-fit border border-[3px]">
               <h2 className="font-mont dark:text-black text-2xl font-bold text-center py-5">
                 Avatar List
               </h2>
               <div className="flex gap-3 justify-center mt-3 flex-wrap">
                 {avatarList?.map((avatar, index) => (
-                  <Image
+                  <div
                     key={avatar.file}
-                    src={avatar.src}
-                    onClick={() => {
-                      setAvatar(index);
-                      setIsAvatar(false);
-                      handleProfile(avatar.file);
-                    }}
-                    alt={user?.fullname || "profile"}
-                    width={100}
-                    className="rounded-full border-red  hover:border hover:border-[3px] hover:scale-[0.98] transition-all"
-                  />
+                    className="relative w-[70px] md:w-[100px] h-[70px] md:h-[100px]"
+                  >
+                    <Image
+                      src={avatar.src}
+                      onClick={() => {
+                        handleProfile(avatar.file);
+                      }}
+                      layout="fill"
+                      objectFit="cover"
+                      alt={user?.fullname || "profile"}
+                      className="rounded-full border-red  hover:border hover:border-[3px] hover:scale-97 transition-all"
+                    />
+                  </div>
                 ))}
               </div>
               <TfiClose
