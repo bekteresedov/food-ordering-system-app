@@ -1,4 +1,5 @@
 import { IFooterAdminBody } from "../admin/IAdminFooter";
+import { IProductBody } from "../admin/IAdminProduct";
 import { IFormLogin } from "../auth/ILogin";
 import { IFormRegister } from "../auth/IRegister";
 import { IFormSettingBody, IFormSettings } from "../profile/IProfile";
@@ -12,5 +13,5 @@ export interface IPatchBody {
 }
 
 export interface IPostBody {
-    body: { categoryName: String }
+    body: { categoryName: String } | IProductBody
 }

@@ -24,8 +24,8 @@ const AdminProfile: React.FC = () => {
   return (
     <>
       <section>
-        <div className="min-h-[400px] w-11/12 mx-auto flex flex-col md:flex-row gap-2 md:gap-10">
-          <div className="border dark:border-t-0  dark:border-[#EBE3D5] min-w-full md:min-w-[250px] hover:scale-[0.98] transition-all bg-white dark:bg-dbg mb-16 md:mb-40">
+        <div className="min-h-[400px] w-11/12 mx-auto flex flex-col md:flex-row gap-2 md:gap-10 mb-20">
+          <div className="border dark:border-t-0  dark:border-[#EBE3D5] min-w-full md:min-w-[250px] hover:scale-[0.98] transition-all bg-white dark:bg-dbg mb-18 md:mb-36">
             <div className="flex flex-col items-center">
               <Image
                 src={admin}
@@ -57,7 +57,7 @@ const AdminProfile: React.FC = () => {
               ))}
             </ul>
           </div>
-          <div className="w-full">
+          <div className="w-full my-14 md:my-0">
             {tabs == 0 ? (
               <AdminProducts />
             ) : tabs == 1 ? (
