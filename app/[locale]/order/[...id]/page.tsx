@@ -5,7 +5,7 @@ const Page = () => {
   return (
     <>
       <main>
-        <div>
+        <div className="min-h-[65vh]">
           <Order />
         </div>
       </main>

@@ -18,7 +18,7 @@ import { IFormLogin } from "@/app/types/auth/ILogin";
 const Login = () => {
   const t = useTranslations("Login");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const { push, refresh } = useRouter();
   const handleButtonClick = (): void => {
@@ -33,7 +33,7 @@ const Login = () => {
       notify();
       refresh();
     } else {
-      setError(response.error);
+      setError(response.error as string);
     }
   };
 

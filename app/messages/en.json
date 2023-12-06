@@ -2,6 +2,12 @@
   "Header": {
     "Order Online": "Order Online"
   },
+  "Footer": {
+    "Contact Us": "Contact Us",
+    "Location": "Location",
+    "Call": "Call",
+    "Opening Hours": "Opening Hours"
+  },
   "NavList": {
     "Home": "Home",
     "Menu": "Menu",
@@ -15,6 +21,9 @@
   "Menu": {
     "Our Menu": "Our Menu",
     "View More": "View More"
+  },
+  "productDetails": {
+    "Add to Cart": "Add to Cart"
   },
   "Carousel": {
     "Order Now": "Order Now",
@@ -38,14 +47,14 @@
     "What Says Our Customers": "What Says Our Customers"
   },
   "Login": {
-    "Successfully Logged in": "Successfully Logged in",
+    "Successfully": "Successfully Logged in",
     "Login": "Login",
     "Your Full Name": "Your Full Name",
     "Your Password": "Your Password",
     "Do you no have account?": "Do you no have account?"
   },
   "Register": {
-    "Successfully Register in": "Successfully Register in",
+    "Successfully": "Successfully Register in",
     "Register": "Register",
     "Your Full Name": "Your Full Name",
     "Your Email Address": "Your Email Address",
@@ -61,7 +70,8 @@
     "Payment": "Payment",
     "Preparing": "Preparing",
     "On the way": "On the way",
-    "Delivered": "Delivered"
+    "Delivered": "Delivered",
+    "Price": "Price"
   },
   "Cart": {
     "Product": "Product",
@@ -70,9 +80,11 @@
     "Quantity": "Quantity",
     "Cart Total": "Cart Total",
     "Subtotal": "Subtotal",
-    "Discount": "Discount",
+    "Porduct Total": "Product Quantity",
     "Total": "Total",
-    "Checkout now": "Checkout Now"
+    "Checkout now": "Checkout Now",
+    "action": "action",
+    "Delete": "Delete"
   },
   "Profile": {
     "Account": "Account",
@@ -104,7 +116,12 @@
     "Address": "Address",
     "Date": "Date",
     "Total": "Total",
-    "Status": "Status"
+    "Status": "Status",
+    "Action": "Action",
+    "Preparing": "Preparing",
+    "On the way": "On the way",
+    "Delivered": "Delivered",
+    "Delete": "Delete"
   },
   "AdminAccount": {
     "Products": "Products",
@@ -120,7 +137,18 @@
     "title": "title",
     "price": "price",
     "action": "action",
-    "delete": "Delete"
+    "delete": "Delete",
+    "camaign": "Campaign",
+    "un camaign": "UnCampaign"
+  },
+  "AddProduct": {
+    "Add a New Product": "Add a New Product",
+    "image url": "Image url",
+    "title": "Title",
+    "description": "Description",
+    "selectCategory": "Select Category",
+    "price": "Price",
+    "Create": "Create"
   },
   "AdminOrder": {
     "Orders": "Orders",

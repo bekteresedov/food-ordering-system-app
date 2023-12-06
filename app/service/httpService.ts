@@ -11,6 +11,7 @@ export async function postAuth(data: IAuthBody, path: string): Promise<IResponse
         if (res.status === 200) {
             cookie.set("token", res.data.data.accessToken, { expires: 1 });
             cookie.set("id", res.data.data.id, { expires: 1 });
+
         }
         return { statusCode: res.status }
     } catch (err: any) {

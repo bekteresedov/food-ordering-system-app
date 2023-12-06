@@ -3,9 +3,13 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div>
-      <ProductDetails />
-    </div>
+    <>
+      <main className="">
+        <div className="w-10/12 mx-auto">
+          <ProductDetails />
+        </div>
+      </main>
+    </>
   );
 };
 

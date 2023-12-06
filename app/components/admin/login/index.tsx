@@ -17,7 +17,7 @@ import { IResponse } from "@/app/types/share/IResponse";
 const AdminLogin = () => {
   const t = useTranslations("AdminLogin");
   const [showErrors, setShowErrors] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(true);
   const { push, refresh } = useRouter();
   const [error, setError] = useState<string>("");
 

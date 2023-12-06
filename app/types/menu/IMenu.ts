@@ -5,9 +5,11 @@ export interface IMenu {
 }
 
 export interface IProduct {
-    src: string;
-    title: string;
-    subTitle: string;
-    price: number;
+    id?: string;
+    src?: string;
+    title?: string;
+    subTitle?: string;
+    price?: number | string;
+    campaign?: { isCampaign: boolean, campaignRate: number }
 
 }

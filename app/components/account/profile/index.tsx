@@ -13,7 +13,9 @@ import { IUser } from "@/app/types/user/IUser";
 import { getHeader, patchHeader } from "@/app/service/httpService";
 import { avatarList } from "@/app/constants/avatar/avatarList";
 import { TfiClose } from "react-icons/tfi";
-
+import { useDispatch } from "react-redux";
+import { reset } from "@/app/redux/features/cartSlice";
+import Loading from "../../share/loading";
 const Profile: React.FC<IProfile> = ({ src, title }) => {
   const [tabs, setTabs] = useState<number>(0);
   const [user, setUser] = useState<IUser | null>();
@@ -22,10 +24,12 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
   const t = useTranslations("Profile");
   const { push, refresh } = useRouter();
   const { id } = useParams();
-
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
   const signOut = (): void => {
     cookie.remove("token");
     cookie.remove("id");
+    dispatch(reset());
     push("/");
     refresh();
   };
@@ -39,17 +43,28 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
       setAvatar(avatarList.findIndex((avatar) => avatar.file == value));
     }
   };
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    try {
       const { data, statusCode } = await getHeader(`/users/get/${id}`);
       if (statusCode === 200) {
         setUser(data);
         setAvatar(avatarList.findIndex((avatar) => avatar.file == data.file));
       }
-    };
-
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <Loading></Loading>
+      </>
+    );
+  }
 
   return (
     <>
@@ -96,7 +111,7 @@ const Profile: React.FC<IProfile> = ({ src, title }) => {
             ) : tabs == 1 ? (
               <Password id={id} />
             ) : tabs == 2 ? (
-              <Order />
+              <Order email={user?.email || ""} />
             ) : null}
           </div>
         </div>

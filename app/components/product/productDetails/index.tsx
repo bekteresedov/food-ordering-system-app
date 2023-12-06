@@ -1,71 +1,120 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import pizza from "./assets/images/pizza6.png";
+import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
-import size from "./assets/images/size.png";
-import Input from "../../UI/input";
 import Button from "../../UI/button";
+import { IProduct } from "@/app/types/admin/IAdminProduct";
+import { useParams } from "next/navigation";
+import { getHeader } from "@/app/service/httpService";
+import { useDispatch } from "react-redux";
+import { optinalIncrementProduct } from "@/app/redux/features/cartSlice";
+import { useTranslations } from "next-intl";
 const ProductDetails = () => {
+  const [product, setProduct] = useState<IProduct>();
+  const [count, setCount] = useState<number>(0);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const t = useTranslations("productDetails");
+
+  useEffect(() => {
+    const getProduct = async (): Promise<void> => {
+      const { data, statusCode } = await getHeader("/products/get/" + id);
+      if (statusCode === 200) {
+        setProduct(data);
+      }
+    };
+
+    getProduct();
+  }, []);
+
+  const handleClick = (): void => {
+    if (count == 0) return;
+    dispatch(
+      optinalIncrementProduct({
+        data: {
+          ...product,
+          price:
+            Number(product?.price) -
+              (Number(product?.price) *
+                (product?.campaign?.campaignRate as number)) /
+                100 || product?.price,
+          src: product?.img,
+          title: product?.productName,
+          id: product?.productId,
+        },
+
+        count: count,
+      })
+    );
+  };
   return (
     <>
       <section>
-        <div className="flex flex-col md:flex-row items-center h-[51  0vh] md:h-screen gap-[50px] md:gap-[100px] w-10/12 mx-auto">
-          <div>
-            <Image src={pizza} alt="pizza" />
+        <div className=" flex  justify-center flex-col md:flex-row items-center h-[140vh] md:h-screen gap-[50px] md:gap-[100px] w-full ">
+          <div className="relative h-[250px] md:h-[400px] w-[250px] md:w-[400px]">
+            <Image
+              src={product?.img || ""}
+              alt={product?.productName || "Anonim"}
+              layout="fill"
+              objectFit="cover"
+              className="dark:border border-red dark:border-[3px] rounded-full hover:scale-105 transition-all "
+            />
+            {product?.campaign?.isCampaign && (
+              <div className="absolute top-0 right-4 text-white bg-red rounded-full px-2 py-1">
+                <span className="font-dancing font-semibold  text-xl md:text-3xl ">
+                  {product?.campaign?.campaignRate}%
+                </span>
+                <span className="font-dancing ml-[2px] text-xs">Off</span>
+              </div>
+            )}
           </div>
           <div>
-            <Title className="text-4xl font-bold mb-2">Good Pizza</Title>
-            <span className="text-red border-b border-red font-bold">$10</span>
+            <Title className="text-4xl font-bold mb-2">
+              {product?.productName}
+            </Title>
+            <span
+              className={`${
+                product?.campaign?.isCampaign && "line-through"
+              } text-red  border-red font-bold relative`}
+            >
+              ${product?.price}
+            </span>
+
+            {product?.campaign?.isCampaign && (
+              <span className="ml-4 text-[green]  font-bold">
+                $
+                {Math.floor(
+                  Number(product?.price) -
+                    (Number(product?.price) *
+                      (product?.campaign?.campaignRate as number)) /
+                      100
+                )}
+              </span>
+            )}
+
             <p className="font-mont mb-4 mt-6 text-[13px] font-medium">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Architecto, at. lorem ipsum .
+              {product?.description}
             </p>
             <div>
-              <h2 className="font-bold font-mont mb-2 cursor-pointer">
-                Choose the size
-              </h2>
-              <div className="flex items-center gap-10">
-                <div className="relative h-8 w-8">
-                  <Image src={size} alt="size" layout="fill" />
-                  <span className="absolute text-[10px] bg-red rounded px-1 font-medium text-white left-4 top-0">
-                    Small
-                  </span>
-                </div>
-                <div className="relative h-10 w-10">
-                  <Image src={size} alt="size" layout="fill" />
-                  <span className="absolute text-[10px] bg-red rounded px-1 font-medium text-white left-4 top-0">
-                    Medium
-                  </span>
-                </div>
-                <div className="relative h-12 w-12">
-                  <Image src={size} alt="size" layout="fill" />
-                  <span className="absolute text-[10px] bg-red rounded px-1 font-medium text-white left-8 top-0">
-                    Large
-                  </span>
-                </div>
-              </div>
+              <Button
+                className="dark:bg-red bg-green px-2 font-bold text-white rounded-2xl "
+                onClick={() => setCount(count > 1 ? count - 1 : 0)}
+              >
+                -
+              </Button>
+              <span className="font-mont font-semibold mx-2 text-xl">
+                {count}
+              </span>
+              <Button
+                className="dark:bg-red bg-green px-2 font-bold text-white rounded-2xl"
+                onClick={() => setCount(count + 1)}
+              >
+                +
+              </Button>
             </div>
-            <div className="flex items-center gap-4 mt-5 mb-4">
-              <div className="flex items-center gap-1">
-                <Input type="checkbox" id="ketcap" />
-                <label
-                  htmlFor="ketcap"
-                  className="text-xs text-semibold font-mont"
-                >
-                  ketcap
-                </label>
-              </div>
-              <div className="flex items-center gap-1">
-                <Input type="checkbox" id="ketcap" />
-                <label
-                  htmlFor="ketcap"
-                  className="text-xs text-semibold font-mont"
-                >
-                  ketcap
-                </label>
-              </div>
-            </div>
-            <Button className="btn-red">Add to Cart</Button>
+            <Button className="btn-red mt-6" onClick={() => handleClick()}>
+              {t("Add to Cart")}
+            </Button>
           </div>
         </div>
       </section>

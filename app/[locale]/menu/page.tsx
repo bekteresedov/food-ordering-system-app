@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <>
       <main>
-        <div className="my-16">
+        <div className="my-16 min-h-[50vh]">
           <MenuList />
         </div>
       </main>

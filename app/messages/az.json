@@ -2,6 +2,12 @@
   "Header": {
     "Order Online": "Onlayn Sifariş Edin"
   },
+  "Footer": {
+    "Contact Us": "Kontakt",
+    "Location": "Ünvan",
+    "Call": "Zəng",
+    "Opening Hours": "Açılış saatları"
+  },
   "NavList": {
     "Home": "Əsas",
     "Menu": "Menyu",
@@ -15,6 +21,9 @@
   "Menu": {
     "Our Menu": "Bizim Menyu",
     "View More": "Daha Çox"
+  },
+  "productDetails": {
+    "Add to Cart": "Səbətə əlavə et"
   },
   "Carousel": {
     "Order Now": "İndi sifariş edin",
@@ -38,14 +47,14 @@
     "What Says Our Customers": "Müştərilərimizin fikirləri"
   },
   "Login": {
-    "Successfully completed!": "Uğurla giriş olundu!",
+    "Successfully": "Uğurla giriş olundu!",
     "Your Full Name": "Ad və soyadın",
     "Your Password": "Parolunuz",
     "Login": "Giriş",
     "Do you no have account?": "Hesabınız yoxdur?"
   },
   "Register": {
-    "Successfully Register in": "Uğurla Qeydiyyat olundu!",
+    "Successfully": "Uğurla Qeydiyyat olundu!",
     "Register": "Qeydiyyat",
     "Your Full Name": "Ad və soyadın",
     "Your Email Address": "E-poçt ünvanınız",
@@ -61,18 +70,21 @@
     "Payment": "Ödəniş",
     "Preparing": "Hazırlanır",
     "On the way": "Yolda",
-    "Delivered": "Çatdırıldı"
+    "Delivered": "Çatdırıldı",
+    "Price": "Qiymət"
   },
   "Cart": {
     "Product": "Məhsul",
     "Extras": "Əlavələr",
     "Price": "Price",
     "Quantity": "Qiymət",
-    "Cart Total": "Səbət Toplam",
+    "Cart Total": "Toplam Səbət",
     "Subtotal": "Ara Cəmi",
-    "Discount": "Endirim",
+    "Porduct Total": "Məhsul Sayı",
     "Total": "Toplam",
-    "Checkout now": "İndi yoxlayın"
+    "Checkout now": "İndi yoxlayın",
+    "action": "əməliyyat",
+    "Delete": "Sil"
   },
   "Profile": {
     "Account": "Hesab",
@@ -104,7 +116,12 @@
     "Address": "Ünvan",
     "Date": "Tarix",
     "Total": "Toplam",
-    "Status": "Vəziyyət"
+    "Status": "Vəziyyət",
+    "Action": "əməliyyat",
+    "Preparing": "Hazırlanır",
+    "On the way": "Yolda",
+    "Delivered": "Çatdırıldı",
+    "Delete": "Sil"
   },
   "AdminAccount": {
     "Products": "Məhsul",
@@ -120,7 +137,18 @@
     "title": "başlıq",
     "price": "qiymət",
     "action": "əməliyyat",
-    "delete": "Sil"
+    "delete": "Sil",
+    "camaign": "K. edin",
+    "un camaign": "K. sil"
+  },
+  "AddProduct": {
+    "Add a New Product": "Yeni məhsul əlavə et",
+    "image url": "Şəkil ünvanı",
+    "title": "Başlıq",
+    "description": "Detallı məlumat",
+    "selectCategory": "Kateqoriya Seç",
+    "price": "Qiymət",
+    "Create": "Yarat"
   },
   "AdminOrder": {
     "Orders": "Sifarişlər",

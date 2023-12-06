@@ -7,8 +7,11 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 const Footer = () => {
   const [footer, setFooter] = useState<IFooterResponse>();
+  const t = useTranslations("Footer");
+
   useEffect(() => {
     const fetchData = async () => {
       const { data, statusCode } = await get("/footers/get/1");
@@ -26,7 +29,7 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start md:flex-row  gap-14 md:w-8/12 mx-auto ">
           <ul className="w-10/12 md:w-4/12">
             <li>
-              <Title className="text-2xl">Contact Us</Title>
+              <Title className="text-2xl">{t("Contact Us")}</Title>
             </li>
             <li className="flex items-center text-[13px] font-mont mt-2 gap-1">
               <FaLocationDot />
@@ -35,14 +38,14 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="text-[12.5px]">Location</span>
+                <span className="text-[12.5px]">{t("Location")}</span>
               </Link>
             </li>
             <li className="flex items-center text-[13px] font-mont mt-1 gap-1">
               <FaPhone />
               <Link href={`tel:${footer?.phoneNumber || ""}`}>
                 <span className="text-[12.5px]">
-                  Call {footer?.phoneNumber}
+                  {t("Call")} {footer?.phoneNumber}
                 </span>
               </Link>
             </li>
@@ -65,7 +68,7 @@ const Footer = () => {
           </ul>
           <ul className="w-10/12 md:w-4/12">
             <li>
-              <Title className="text-2xl">Opening Hours</Title>
+              <Title className="text-2xl">{t("Opening Hours")}</Title>
             </li>
             <li>
               <span className="text-[12.5px] font-mont mt-2">

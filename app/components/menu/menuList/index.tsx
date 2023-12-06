@@ -1,138 +1,67 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
-import { IMenu } from "@/app/types/menu/IMenu";
 import MenuItem from "../menuItem";
 import Button from "../../UI/button";
 import { useTranslations } from "next-intl";
-const data: IMenu[] = [
-  {
-    categoryName: "Hamburger",
-    product: [
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-    ],
-  },
-  {
-    categoryName: "Hamburger",
-    product: [
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Hamburger",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-    ],
-  },
-  {
-    categoryName: "Pizza",
-    product: [
-      {
-        title: "Pizza",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Pizza",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-      {
-        title: "Pizza",
-        subTitle:
-          "lorem ipsum dolor sit amet, consectetur adip  sapien sed diam. Lorem ipsum dolor sit amet",
-        price: 10,
-        src: "https://pizzamizza.az/upload/resize_cache/iblock/05c/254_254_2/05c1187c21bea988b38e31089dfec366.jpg?161761730265933",
-      },
-    ],
-  },
-];
+import { IProduct } from "@/app/types/admin/IAdminProduct";
+import { get } from "@/app/service/httpService";
+import Loading from "../../share/loading";
 
 const MenuList = () => {
-  const [number, setNumber] = useState<number>(0);
   const [limit, setLimit] = useState<number>(3);
   const t = useTranslations("Menu");
+  const [products, setProducts] = useState<IProduct[]>();
+  const [category, setCategory] = useState<string[]>();
+  const [select, setSelect] = useState<string>("All");
+  const [filterProducts, setFilterProducts] = useState<IProduct[]>();
+  const [loading, setLoading] = useState(true);
+  const handleFilter = (filter: string): void => {
+    setSelect(filter);
+    if (filter == "All") {
+      setFilterProducts(products);
+    } else {
+      setFilterProducts(
+        products?.filter(
+          (product: IProduct) => product.Category?.categoryName == filter
+        )
+      );
+    }
 
+    setLimit(3);
+  };
+  const fetchData = async () => {
+    try {
+      const { data, statusCode } = await get("/products/all");
+      if (statusCode === 200) {
+        const unique: string[] = [];
+        data.forEach((item: IProduct) => {
+          if (!unique.includes(item.Category?.categoryName as string)) {
+            unique.push(item.Category?.categoryName as string);
+          }
+        });
+        setCategory(["All", ...unique]);
+        const productList: IProduct[] = data.filter(
+          (product: IProduct) => product.campaign?.isCampaign != true
+        );
+        setProducts(productList);
+        setFilterProducts(productList);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <>
+        <Loading></Loading>
+      </>
+    );
+  }
   return (
     <>
       <section className={`w-8/12 mx-auto`}>
@@ -140,44 +69,46 @@ const MenuList = () => {
           {t("Our Menu")}
         </Title>
         <div>
-          <div className="flex flex-col items-center mt-4">
+          <div className="flex flex-col items-center mt-6 mb-2">
             <ul className="flex items-center gap-4 font-mont font-medium  text-[13px]">
-              {data.map((item, index) => (
+              {category?.map((item, index) => (
                 <li
-                  key={index}
+                  key={item + index}
                   onClick={() => {
-                    setNumber(index);
-                    setLimit(3);
+                    handleFilter(item);
                   }}
                   className={
-                    number == index
+                    item == select
                       ? "dark:bg-dbg bg-green rounded-full cursor-pointer px-3 py-[4px] text-white hover:scale-95 transition-all "
                       : ""
                   }
                 >
-                  {item.categoryName}
+                  {item}
                 </li>
               ))}
             </ul>
-            <ul className="flex justify-between mt-5 flex-wrap ">
-              {data[number].product.slice(0, limit).map((item, index) => (
-                <li
-                  key={index}
-                  className={`w-full sm:w-full md:w-[45%] lg:w-[30%] mb-5`}
-                >
-                  <MenuItem
-                    price={item.price}
-                    src={item.src}
-                    subTitle={item.subTitle}
-                    title={item.title}
-                  />
-                </li>
-              ))}
+            <ul className="flex w-full justify-center gap-7 mt-7 flex-wrap ">
+              {filterProducts
+                ?.slice(0, limit)
+                .map((item: IProduct, index: number) => (
+                  <li
+                    key={item.productId}
+                    className=" min-h-[350px] w-full sm:w-full md:w-[45%] lg:w-[30%] mb-5"
+                  >
+                    <MenuItem
+                      id={item.productId as string}
+                      price={item.price}
+                      src={item.img}
+                      subTitle={item.description as string}
+                      title={item.productName}
+                    />
+                  </li>
+                ))}
             </ul>
             <Button
               className="btn-red font-mont mt-2 "
               onClick={() => setLimit(limit + 3)}
-              disabled={limit == data[number].product.length}
+              disabled={limit == filterProducts?.length}
             >
               {t("View More")}
             </Button>

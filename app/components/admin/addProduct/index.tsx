@@ -2,18 +2,25 @@ import React, { useEffect, useState } from "react";
 import Title from "../../UI/title";
 import Input from "../../UI/input";
 import Button from "../../UI/button";
-import { IExtraProduct } from "@/app/types/admin/IAdminProduct";
-import { TfiClose } from "react-icons/tfi";
 import {
-  ICategoryProps,
-  ICategoryResponse,
-} from "@/app/types/admin/IAdminCategory";
+  IAddProductsProps,
+  IExtraProduct,
+  IProduct,
+} from "@/app/types/admin/IAdminProduct";
+import { TfiClose } from "react-icons/tfi";
+import { ICategoryResponse } from "@/app/types/admin/IAdminCategory";
 import { get, postHeader } from "@/app/service/httpService";
+import { useTranslations } from "next-intl";
 
-const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
+const AddProduct: React.FC<IAddProductsProps> = ({
+  setClick,
+  setState,
+  state,
+}) => {
   const [extraProducts, setExtraProducts] = useState<IExtraProduct[]>([]);
   const [extraProduct, setExtraProduct] = useState<IExtraProduct>();
   const [categories, setCategories] = useState<ICategoryResponse[]>([]);
+  const t = useTranslations("AddProduct");
 
   const handleProduct = (): void => {
     if (extraProduct) {
@@ -29,7 +36,7 @@ const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
     const desc = form.desc.value;
     const category = form.category.value;
     const price = form.price.value;
-    if (img && category && desc && price && title && extraProducts.length) {
+    if (img && category && desc && price && title) {
       const { data, statusCode } = await postHeader(
         {
           body: {
@@ -46,6 +53,8 @@ const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
 
       if (statusCode == 200) {
         console.log("Success");
+        setState([...(state as IProduct[]), data]);
+        setClick(false);
       }
     }
   };
@@ -63,7 +72,7 @@ const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
   return (
     <>
       <div className="mt-2 w-[500px] h-fit rounded p-10 bg-white relative">
-        <Title className="text-3xl font-bold text-center m-4">
+        <Title className="text-3xl text-black font-bold text-center m-4">
           Add a New Product
         </Title>
         <form onSubmit={handleCreate}>
@@ -72,31 +81,35 @@ const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
               htmlFor="img"
               className="font-mont font-medium  text-[13px] "
             >
-              Image URL
+              {t("image url")}
             </label>
             <Input
               id="img"
               className="py-2 px-1 my-1"
-              placeholder="image url"
+              placeholder={t("image url")}
             />
           </div>
           <div>
             <label htmlFor="tt" className="font-mont font-medium  text-[13px] ">
-              Title
+              {t("title")}
             </label>
-            <Input id="tt" className="py-2 px-1 my-1" placeholder="title" />
+            <Input
+              id="tt"
+              className="py-2 px-1 my-1"
+              placeholder={t("title")}
+            />
           </div>
           <div>
             <label
               htmlFor="desc"
               className="font-mont font-medium  text-[13px] "
             >
-              Description
+              {t("description")}
             </label>
             <Input
               id="desc"
               className="py-2 px-1 my-1 mb-2"
-              placeholder="description"
+              placeholder={t("description")}
             />
           </div>
           <div>
@@ -104,7 +117,7 @@ const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
               className="block font-mont font-medium  text-[13px] "
               htmlFor="category"
             >
-              Select Category
+              {t("selectCategory")}
             </label>
             <select
               id="category"
@@ -122,50 +135,17 @@ const AddProduct: React.FC<ICategoryProps> = ({ setClick }) => {
               htmlFor="price"
               className="font-mont font-medium  text-[13px] "
             >
-              Price
+              {t("price")}
             </label>
-            <Input id="price" className="py-2 px-1 mb-1" placeholder="Price" />
+            <Input
+              id="price"
+              className="py-2 px-1 mb-1"
+              placeholder={t("price")}
+            />
           </div>
-          <div>
-            <label
-              htmlFor="extra"
-              className="font-mont font-medium  text-[13px] "
-            >
-              Extra
-            </label>
-            <div className="flex gap-5 items-center mb-1">
-              <Input
-                id="extra"
-                className="py-2 px-1 "
-                placeholder="title"
-                onChange={(e) =>
-                  setExtraProduct({ ...extraProduct, title: e.target.value })
-                }
-              />
-              <Input
-                className="py-2 px-1"
-                placeholder="Price"
-                onChange={(e) =>
-                  setExtraProduct({ ...extraProduct, price: e.target.value })
-                }
-              />
-              <Button className="btn-red" type="button" onClick={handleProduct}>
-                Add
-              </Button>
-            </div>
-            <ul className="flex gap-2 mt-2">
-              {extraProducts?.map((product) => (
-                <li key={product.title}>
-                  <span className="border border-red text-xs py-1 px-2 rounded-2xl text-medium text-red">
-                    {product.title}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="text-end">
+          <div className="text-end mt-4">
             <Button className="btn-green" type="submit">
-              Create
+              {t("Create")}
             </Button>
           </div>
         </form>

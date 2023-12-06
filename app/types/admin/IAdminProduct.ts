@@ -3,11 +3,28 @@ export interface IExtraProduct {
     price?: string;
 }
 
-export interface IProductBody {
+export interface IProduct {
+    productId?: string;
     category_id: number;
-    productName: String;
+    productName: string;
     description: String;
-    price: String;
-    img: String;
+    price: string;
+    img: string;
     extraOptions: any;
+    Category?: {
+        categoryId: number;
+        categoryName: string;
+    }
+    campaign?: { isCampaign: boolean, campaignRate: number }
+}
+
+export interface IAddProductsProps {
+    setClick: (click: boolean) => void;
+    setState: (state: IProduct[]) => void;
+    state: IProduct[] | undefined;
+}
+
+
+export interface ICampaign {
+    campaign: { isCampaign: boolean, campaignRate: number }
 }
